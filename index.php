@@ -1,8 +1,13 @@
 <?php
+
+include("Sherif.php");
+
 $page = false;
 if (isset($_GET['page'])) {
 $page = $_GET['page'];	
 }
+
+
 
 ?>
 <!DOCTYPE html>
