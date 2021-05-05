@@ -1,0 +1,48 @@
+img {
+  width:200px;
+  height:300px;
+}
+
+#banner{
+     padding:0 20px;
+  border: 1px solid #c3c3c3;
+  display: flex;
+  flex-wrap: wrap;
+  /* align-content: center; */
+}
+#banner img{
+     display:block;
+     margin:0 auto;
+}
+
+#script_list{
+	width:200px;
+	
+}
+
+#input_script{
+	
+	width:200px;
+}
+
+option{
+	width:200px;
+	
+	
+}
+
+.hide_by_default{
+	
+	display: none;
+}
+.script_icon{
+	
+	width:30px;
+	height:30px;
+
+}
+.script_icon_big{
+	
+	width:40px;
+
+}
