@@ -7,8 +7,6 @@
 		
 		echo "executing script : ".$scipt_name."<br>";
 		
-		
-		
 		$scene_paths_array = explode(",",$scene_paths_str);
 		
 		$program_path = 'C:/Program Files (x86)/Toon Boom Animation/Toon Boom Harmony 20 Premium/win64/bin/HarmonyPremium.exe';

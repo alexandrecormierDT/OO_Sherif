@@ -25,6 +25,13 @@ img {
 	width:200px;
 }
 
+
+.tbscene_row{
+	
+	border: 1px solid black;
+}
+
+
 option{
 	width:200px;
 	
@@ -45,4 +52,11 @@ option{
 	
 	width:40px;
 
+}
+
+
+table{
+	
+	border: 1px solid black;
+	
 }
