@@ -164,7 +164,6 @@
 			
 			return $activated_slashes;
 			
-			
 		}		
 	}
 

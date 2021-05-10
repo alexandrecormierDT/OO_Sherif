@@ -55,30 +55,32 @@
 			
 			$command_string = $this->scan_sub_folder_bin_path." ".$this->folder_path;
 			
-			$result_array = array();
 			
 			try {
 				
+				$result_array = array();
+				
 				exec($command_string,$result_array);
+				
+				$remote_folders_instances = array();
+
+				foreach($result_array  as $sub_folder_path){
+					
+					$new_remote_folder = new RemoteFolder($sub_folder_path);
+					
+					array_push($remote_folders_instances,$new_remote_folder);
+					
+				}
+				
+				return $remote_folders_instances;
 				
 			} catch (Exception $e) {
 				
 				echo 'Exception reçue : ',  $e->getMessage(), "\n";
 			}
 			
-			
-			$remote_folders_instances = array();
+			return false;
 
-			foreach($result_array  as $sub_folder_path){
-				
-				$new_remote_folder = new RemoteFolder($sub_folder_path);
-				
-				array_push($remote_folders_instances,$new_remote_folder);
-				
-			}
-			
-			return $remote_folders_instances;
-	
 		}
 		
 		
@@ -135,39 +137,33 @@
 			
 			$ext_command_string = $this->scan_all_files_by_extension_bin_path." ".$this->folder_path." ".$file_extension;
 			
-			$result_file_path_array = array();
 			
 			try {
 				
+				$result_file_path_array = array();
+				
 				exec($ext_command_string,$result_file_path_array);
+				
+				$remote_files_instances = array();
+
+				foreach($result_file_path_array  as $file_path){
+					
+					if($this->is_a_file($file_path)){
+						
+						$new_remote_folder = new RemoteFile($file_path);
+						
+						array_push($remote_files_instances,$new_remote_folder);
+						
+					}
+					
+				}
+				
+				return $remote_files_instances;
 				
 			} catch (Exception $e) {
 				
 				echo 'Exception reçue : ',  $e->getMessage(), "\n";
 			}
-			
-			
-			$remote_files_instances = array();
-			
-			echo "<br>";
-			echo "result_file_path_array";
-			echo "<br>";
-			echo count($result_file_path_array);
-
-			foreach($result_file_path_array  as $file_path){
-				
-				if($this->is_a_file($file_path)){
-					
-					$new_remote_folder = new RemoteFile($file_path);
-					
-					array_push($remote_files_instances,$new_remote_folder);
-					
-				}
-				
-			}
-			
-			return $remote_files_instances;
-			
 			
 		}	
 		

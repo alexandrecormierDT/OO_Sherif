@@ -1,13 +1,3 @@
-
-<table class="tbscenes_table">
-
-<thead>
-        <tr>
-            <th colspan="2">TBSCENE LIST</th>
-        </tr>
- </thead>
- 
- <tbody>
 <?php
 	
 	global $LEVEL;
@@ -21,26 +11,28 @@
 			$xstage_name = $tbscene_object->get_tbscene_name();
 			$xstage_path = $tbscene_object->get_last_xstage_path();
 			?>
-			<tr class="tbscene_row">
+			<div class="tbscene_row">
 
-				<td>
 				<?php
 					include($LEVEL."view/php/templates/tbscene_input.php");
 				?>
-				</td>
-				<td>
+
 				<?php
 					include($LEVEL."view/php/templates/tbscene_name.php");
 				?>
-				</td>				
-				<td>
+
 				<?php
 					$tbscene_script_log_history = $tbscene_object->get_script_log_history();
-					include($LEVEL."view/php/templates/tbscene_script_history.php");
+					include($LEVEL."view/php/tbscene_script_history.php");
 				?>
-				</td>
+				<?php
+					include($LEVEL."view/php/templates/tbscene_batch_status.php");
+				?>
+				<?php
+					include($LEVEL."view/php/templates/tbscene_batch_feedback.php");
+				?>
 
-			</tr>
+			</div>
 			<?php
 
 		}		
@@ -48,7 +40,3 @@
 	}
 
 ?>
- </tbody>
-
-   
-</table>

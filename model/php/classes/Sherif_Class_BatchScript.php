@@ -1,7 +1,14 @@
 <?php
+
+class BatchScript extends RemoteFile
+{
 	
-	// Define the parameters for the shell command
+    public function __construct($_file_path) {
+		
+		parent::__construct($_file_path);
+		
+    }
 	
 
-//
+}
 ?>
