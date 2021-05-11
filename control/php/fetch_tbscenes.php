@@ -16,24 +16,22 @@
 		$LEVEL = "../../";
 		
 		include($LEVEL."model/php/Sherif.php");
-		
-		global $SHERIF; 
-		
-		if(isset($SHERIF)== false){
-			
-			$SHERIF = new Sherif();
-			
-		}
+
+		$TM = new TBSceneManager();
 		
 		$root_folder_path = $selected_root_folder_path;
 
-		$SHERIF->tbscenes->fetch_tbscenes_from_folder($root_folder_path);
+		$TM->fetch_tbscenes_from_folder($root_folder_path);
 		
 		global $tbscnes_object_array;
 		
-		$tbscenes_object_array = $SHERIF->tbscenes->get_tbscene_objects_array();
+		$tbscenes_object_json_array = $TM->get_tbscene_array_as_json();
 		
-		include($LEVEL."view/php/tbscene_input_list.php");
+		//include($LEVEL."view/php/tbscene_input_list.php");
+		
+		
+		
+		echo $tbscenes_object_json_array;
 	}
 
 

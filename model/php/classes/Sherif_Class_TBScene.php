@@ -87,6 +87,19 @@ class TBScene extends RemoteFolder
 		}
 
 	}
+	
+	private function parse_to_json_object(){
+		
+		return json_encode(get_object_vars($this));
+		
+	}
+	
+	
+	public function get_json_object(){
+		
+		return parse_to_json_object();
+		
+	}
 
 }
 ?>

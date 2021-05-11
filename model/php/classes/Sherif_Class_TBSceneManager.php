@@ -3,12 +3,12 @@
 class TBSceneManager
 {
 	
-	private $tbscenes_array;
+	private $tbscenes_object_array;
 
 	
     public function __construct() {
 		
-		$this->tbscenes_array = array();  
+		$this->tbscenes_object_array = array();  
 
     }
 	
@@ -16,7 +16,7 @@ class TBSceneManager
 		
 		$new_tbscene = new TBScene(); 
 		$new_tbscene->set_xstage_path($_xstage_path); 
-		array_push($tbscenes_array,$new_tbscene);
+		array_push($tbscenes_object_array,$new_tbscene);
 		
 	}
 	
@@ -24,14 +24,28 @@ class TBSceneManager
 	public function get_tbscene_objects_array(){
 		
 	
-		return $this->tbscenes_array;
+		return $this->tbscenes_object_array;
 		
 	}
 	
+	public function get_tbscene_array_as_json(){
+		
+		$tbscenes_json_array = array();
+		
+		foreach($this->tbscenes_object_array as $tbscene){
+			
+				$json_object =  $tbscene->get_json_object();
+				
+				array_push($tbscenes_json_array,$json_object);
+
+		}
+		
+		return json_encode($tbscenes_json_array);
+	}	
 	
 	public function get_tbscene_by_foldername($_searched_folder_name){
 	
-		foreach($tbscenes_array as $tbscene){
+		foreach($this->tbscenes_object_array as $tbscene){
 			
 			if($tbscene->get_folder_name() == $_searched_folder_name){
 				
@@ -53,7 +67,7 @@ class TBSceneManager
 				
 				$new_tbscene = new TBScene($sub_folder_object->get_folder_path());
 				
-				array_push($this->tbscenes_array,$new_tbscene);
+				array_push($this->tbscenes_object_array,$new_tbscene);
 				
 			}
 
@@ -88,6 +102,9 @@ class TBSceneManager
 		return false;
 		
 	}
+	
+	
+	
 	
 
 }
