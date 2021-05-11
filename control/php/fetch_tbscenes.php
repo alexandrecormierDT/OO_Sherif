@@ -20,7 +20,9 @@
 		global $SHERIF; 
 		
 		if(isset($SHERIF)== false){
+			
 			$SHERIF = new Sherif();
+			
 		}
 		
 		$root_folder_path = $selected_root_folder_path;

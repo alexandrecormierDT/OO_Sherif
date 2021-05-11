@@ -43,44 +43,81 @@ class Batch
 		
 	}
 	
+	
+	
+	
+	
 
-	public function run_batch_monothread(){
+	public function run_batch_monothread_multi_xstages(){
 		
-		$command_string = $this->format_command_string(); 
-		
-		foreach($this->xstages_paths_array as $xstages_path){
-			
-			$xstage_path_with_no_spaces = preg_replace("/\s+/","",$xstages_path);
-			$script_path_with_no_spaces = preg_replace("/\s+/","",$this->batch_script_path);
-			
-			$bacth_command_string = '"'.$this->harmony_path.'" "'.$xstage_path_with_no_spaces.'" -batch -compile "'.$script_path_with_no_spaces.'"';
-			
-			echo "<div id='bacth_command_string'>";
-			echo $bacth_command_string;
-			echo "</div>";
-			
-			$repport = "";
-			
-			try {
-				
-				$result_string = "";
-				
-				exec($bacth_command_string,$result_string);
-				
-				
-			} catch (Exception $e) {
-				
-				echo 'error running batch : '.$e->getMessage()."\n";
-				
-			}
-			
-		}
-		
-		
+		$command_string = $this->format_command_string_multi_xstages();
+
+		echo "<div id='bacth_command_string'>";
+		echo $command_string;
+		echo "</div>";
+	
+		exec($command_string,$result_string);
 		
 	}			
 	
-	private function format_command_string(){
+	public function run_batch_monothread_repeat(){
+					
+		foreach($this->xstages_paths_array as $xstage_path){
+			
+			$command_string = $this->format_command_single_xstage($xstage_path);
+			
+			echo "<div id='bacth_command_string'>";
+			echo $xstage_path;
+			echo "<br>";
+			echo $command_string;
+			echo "</div>";
+			
+			$result_string;
+			exec($command_string,$result_string);	
+
+			echo '[DONE]';			
+			
+		}
+		
+		echo '[BATCH FINISHED]';
+		
+	}
+	
+	
+	// not supported  :(
+	
+	private function format_command_string_multi_xstages(){
+		
+		$xstages_list_string = "";
+		
+		$command_string = "";
+		
+		foreach($this->xstages_paths_array as $xstage_path){
+
+			$xstage_path_with_no_spaces = preg_replace("/\s+/","",$xstage_path);
+			$script_path_with_no_spaces = preg_replace("/\s+/","",$this->batch_script_path);
+			$xstages_list_string .=' "'.$xstage_path_with_no_spaces.'"';
+
+		}	
+		
+		$command_string = '"'.$this->harmony_path.'" '.$xstages_list_string.' -batch -compile "'.$script_path_with_no_spaces.'"';
+		
+		return $command_string;
+		
+		
+	}
+	
+	
+	private function format_command_single_xstage($_xstage_path){
+		
+		$command_string = "";
+		
+		$xstage_path_with_no_spaces = preg_replace("/\s+/","",$_xstage_path);
+		$script_path_with_no_spaces = preg_replace("/\s+/","",$this->batch_script_path);
+
+		$command_string = '"'.$this->harmony_path.'" "'.$xstage_path_with_no_spaces.'" -batch -compile "'.$script_path_with_no_spaces.'"';
+		
+		return $command_string;
 		
 		
 	}

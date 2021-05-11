@@ -20,7 +20,7 @@
 		$batch_object = new Batch();
 		$batch_object->parse_xstages_path_list_string($xstages_paths_list_str);
 		$batch_object->set_batch_script_path($batchscipt_path);
-		$batch_object->run_batch_monothread();
+		$batch_object->run_batch_monothread_repeat();
 		
 
 	}
