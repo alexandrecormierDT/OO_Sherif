@@ -17,6 +17,11 @@ $root_page = "http://localhost/OO_sherif/index.php";
 <head>
 <link rel="stylesheet" href="view/styles/sherif.css">
 <script src="lib/jquery.js"></script>
+<script src="model/js/Sherif.js" type="text/javascript"></script>
+<script src="model/js/classes/Sherif_Class_TBScene.js" type="text/javascript"></script>
+<script src="control/js/Sherif_Control.js" type="text/javascript"></script>
+<script src="view/js/classes/Sherif_Class_TBSceneRowObject.js" type="text/javascript"></script>
+<script src="control/js/send_batch_form.js" type="text/javascript"></script>
 </head>
 <body>
 	<?php include("view/php/banner.php");?>

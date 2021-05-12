@@ -8,7 +8,9 @@ class ScriptLog extends RemoteFile
 	
 	private $script_name; 
 	
-	private $time_stamp; 
+	private $time_stamp;
+
+	private $script_log_link;
 	
     public function __construct($_file_path) {
 		
@@ -17,6 +19,8 @@ class ScriptLog extends RemoteFile
 		$this->script_icon_png_directory = "http://localhost/OO_sherif/view/png/script_icons/";
 		$this->parse_script_file_name();
 		$this->icon_png_path  = $this->parse_icon_png_path();
+		$this->script_log_link = "http://localhost/OO_sherif/index.php?page=script_log&log_path=".$this->get_deactivated_file_path();
+		
 	
     } 
 	
@@ -26,6 +30,7 @@ class ScriptLog extends RemoteFile
 		$this->set_property('icon_png_path',$this->icon_png_path); 
 		$this->set_property('script_name',$this->script_name); 
 		$this->set_property('time_stamp',$this->time_stamp); 				
+		$this->set_property('script_log_link',$this->script_log_link); 				
 	}
 	
 	public function get_icon_png_path(){
@@ -33,7 +38,11 @@ class ScriptLog extends RemoteFile
 		return $this->icon_png_path;
 		
 	}
-	
+	public function get_script_log_link(){
+		
+		return $this->script_log_link;
+		
+	}	
 	private function parse_script_file_name(){
 		
 		$file_name_no_ext = $this->get_file_name_without_extension();
