@@ -17,9 +17,16 @@ class ScriptLog extends RemoteFile
 		$this->script_icon_png_directory = "http://localhost/OO_sherif/view/png/script_icons/";
 		$this->parse_script_file_name();
 		$this->icon_png_path  = $this->parse_icon_png_path();
-		
-		
+	
     } 
+	
+	public function update_property_map(){
+		
+		
+		$this->set_property('icon_png_path',$this->icon_png_path); 
+		$this->set_property('script_name',$this->script_name); 
+		$this->set_property('time_stamp',$this->time_stamp); 				
+	}
 	
 	public function get_icon_png_path(){
 		
@@ -62,6 +69,7 @@ class ScriptLog extends RemoteFile
 		return $parsed_png_path;
 		
 	}	
+	
 
 }
 ?>

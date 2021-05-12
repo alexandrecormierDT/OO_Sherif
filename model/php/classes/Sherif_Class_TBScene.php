@@ -22,9 +22,17 @@ class TBScene extends RemoteFolder
 		
 		$this->parse_sub_folders();
 		
-		
-		
     }
+	
+
+	
+	//override
+	public function update_property_map(){
+	
+		$this->set_property('xstage',$this->last_xstage_object->get_object_propeties_map()) ;
+		$this->set_property('log_folder',$this->log_folder_object->get_object_propeties_map());
+	
+	}
 	
 	public function get_tbscene_name(){
 		
@@ -88,18 +96,7 @@ class TBScene extends RemoteFolder
 
 	}
 	
-	private function parse_to_json_object(){
-		
-		return json_encode(get_object_vars($this));
-		
-	}
-	
-	
-	public function get_json_object(){
-		
-		return parse_to_json_object();
-		
-	}
+
 
 }
 ?>

@@ -14,6 +14,12 @@ class LogFolder extends RemoteFolder
 		
     }
 	
+	public function update_property_map(){
+		
+		$this->set_property('script_log_object_array',$this->get_parsed_log_property_array()); 
+			
+	}
+	
 	
 	private function parse_html_files(){
 		
@@ -42,6 +48,22 @@ class LogFolder extends RemoteFolder
 		
 		return $this->script_log_object_array;
 		
+		
+	}
+	
+	public function get_parsed_log_property_array(){
+		
+			$parsed_log_array = array();
+		
+			foreach($this->script_log_object_array as $script_log_object){
+				
+				$script_log_map = $script_log_object->get_object_propeties_map();
+				
+				array_push($parsed_log_array,$script_log_map);
+			
+			}
+			
+			return $parsed_log_array;
 		
 	}
 	

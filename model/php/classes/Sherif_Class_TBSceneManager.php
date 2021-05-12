@@ -1,6 +1,6 @@
 <?php
 	
-class TBSceneManager
+class TBSceneManager 
 {
 	
 	private $tbscenes_object_array;
@@ -34,9 +34,11 @@ class TBSceneManager
 		
 		foreach($this->tbscenes_object_array as $tbscene){
 			
-				$json_object =  $tbscene->get_json_object();
+				$tbscene_map =  $tbscene->get_object_propeties_map();
 				
-				array_push($tbscenes_json_array,$json_object);
+				//print_r($tbscene_map);
+				
+				array_push($tbscenes_json_array,$tbscene_map);
 
 		}
 		

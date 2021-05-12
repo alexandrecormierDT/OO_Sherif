@@ -5,6 +5,7 @@
 		$LEVEL = "";
 	}
 	
+	include($LEVEL."model/php/classes/Sherif_Class_SherifObject.php");
 	include($LEVEL."model/php/classes/Sherif_Class_RemoteFolder.php");
 	include($LEVEL."model/php/classes/Sherif_Class_RemoteFile.php");
 	include($LEVEL."model/php/classes/Sherif_Class_XStage.php");

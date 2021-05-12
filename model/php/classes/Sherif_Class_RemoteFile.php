@@ -1,6 +1,6 @@
 <?php
 	
-	class RemoteFile{
+	class RemoteFile extends SherifObject{
 		
 		private $file_path; 		
 		private $file_name; 		
@@ -10,6 +10,7 @@
 		
 		public function __construct($_file_path) {
 			
+			parent::__construct();
 
 			$this->file_path = $this->clean_path($_file_path);
 			$this->read_file_bin_path = "C:/wamp64/www/OO_Sherif/control/bin/read_file.cmd";	
@@ -17,6 +18,17 @@
 			$this->parent_folder_path = $this->parse_parent_folder_path_from_file_path();
 			$this->file_extension = $this->parse_extension_from_file_path();
 			
+			$this->set_property('file_path',$this->file_path); 
+			$this->set_property('file_name',$this->file_name); 
+			$this->set_property('file_extension',$this->file_extension);
+			
+		}
+		
+		public function update_property_map(){
+			
+			$this->set_property('file_path',$this->clean_path($this->file_path)); 
+			$this->set_property('file_name',$this->file_name); 
+			$this->set_property('file_extension',$this->file_extension); 			
 			
 		}
 		
@@ -165,6 +177,10 @@
 			return $activated_slashes;
 			
 		}		
+		
+
+		
+		
 	}
 
 ?>

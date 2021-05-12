@@ -29,8 +29,6 @@
 		
 		//include($LEVEL."view/php/tbscene_input_list.php");
 		
-		
-		
 		echo $tbscenes_object_json_array;
 	}
 

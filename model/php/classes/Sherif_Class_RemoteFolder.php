@@ -1,6 +1,6 @@
 <?php
 	
-	class RemoteFolder{
+	class RemoteFolder extends SherifObject{
 		
 		private $folder_path; 		
 		private $folder_name; 		
@@ -11,17 +11,27 @@
 		
 		public function __construct($_folder_path) {
 			
+			
+			parent::__construct();
 
 			$this->folder_path = $this->clean_path($_folder_path);
-			
 			$this->scan_sub_folder_bin_path = "C:/wamp64/www/OO_Sherif/control/bin/scandir_sub_dir.cmd";
-			
 			$this->scan_all_files_bin_path = "C:/wamp64/www/OO_Sherif/control/bin/scandir_all_files.cmd";
-			
 			$this->scan_all_files_by_extension_bin_path = "C:/wamp64/www/OO_Sherif/control/bin/scandir_all_files_by_extension.cmd";
-			
 			$this->folder_name = $this->parse_folder_name_from_folder_path();
-
+			
+			
+			$this->set_property('folder_path',$this->folder_path); 
+			$this->set_property('folder_name',$this->folder_name);
+		}
+		
+		
+		//override
+		public function update_property_map(){
+			
+			$this->set_property('folder_path',$this->folder_path); 
+			$this->set_property('folder_name',$this->folder_name); 		
+			
 		}
 		
 		
@@ -56,7 +66,7 @@
 			$command_string = $this->scan_sub_folder_bin_path." ".$this->folder_path;
 			
 			
-			try {
+			//try {
 				
 				$result_array = array();
 				
@@ -74,12 +84,12 @@
 				
 				return $remote_folders_instances;
 				
-			} catch (Exception $e) {
+			//} catch (Exception $e) {
 				
-				echo 'Exception reçue : ',  $e->getMessage(), "\n";
-			}
+				//echo 'Exception reçue : ',  $e->getMessage(), "\n";
+			//}
 			
-			return false;
+			//return false;
 
 		}
 		
@@ -92,14 +102,14 @@
 			
 			$result_array = array();
 			
-			try {
+			//try {
 				
 				exec($command_string,$result_array);
 				
-			} catch (Exception $e) {
+			//} catch (Exception $e) {
 				
-				echo 'Exception reçue : ',  $e->getMessage(), "\n";
-			}
+				//echo 'Exception reçue : ',  $e->getMessage(), "\n";
+			//}
 			
 			
 			$remote_files_instances = array();
@@ -119,6 +129,9 @@
 					
 		}
 		
+		
+		
+		
 		private function is_a_file($_file_path){
 			
 			$point_explode = explode(".",$_file_path);
@@ -126,6 +139,7 @@
 			if(count($point_explode) > 1){
 				return true;
 			}
+			
 			return false;
 			
 			
@@ -173,6 +187,8 @@
 			
 		}		
 		
+
+				
 		
 	}
 

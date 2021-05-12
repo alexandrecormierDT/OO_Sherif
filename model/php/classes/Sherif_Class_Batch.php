@@ -1,6 +1,6 @@
 <?php
 	
-class Batch
+class Batch extends SherifObject
 {
 	
 	private $batch_script_path; 
