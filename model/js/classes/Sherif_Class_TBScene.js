@@ -124,8 +124,7 @@ window.Sherif.model.TBScene = function(){
 	var log_folder_object;
 	var xstage; 
 	var selected = false; 
-	
-	var input_div_template_path = "view/html/templates/tbscene_input.html";
+
 	
 	var tbscene_id =""; 
 
@@ -141,9 +140,16 @@ window.Sherif.model.TBScene = function(){
 		xstage.parse_json_map(_json_object.xstage);
 		
 		log_folder_object = new window.Sherif.model.LogFolder(); 
-		log_folder_object.parse_json_map(_json_object.log_folder);
+		//log_folder_object.parse_json_map(_json_object.log_folder);
 		
 	}
+	
+	this.parse_script_log_history_json = function(_json_object){
+		
+		log_folder_object.parse_json_map(_json_object);
+		
+	}
+
 	
 	this.select_tbscene = function(){
 		
@@ -221,6 +227,21 @@ window.Sherif.model.TBScenesManager = function(){
 		tbscene_id = _tbscene_object.get_tbscene_id();
 		
 		tbscenes_objects_array[tbscene_id]=_tbscene_object;
+		
+	}
+	
+	this.parse_tbscene_objects_from_json = function(_json_object){
+		
+		for(var t = 0 ; t < _json_object.length ; t++){
+	
+			var TBS_object = new window.Sherif.model.TBScene();
+			
+			TBS_object.parse_json_map(_json_object[t]); 
+			
+			this.add_tbscene_object(TBS_object);
+
+
+		}	
 		
 	}
 	

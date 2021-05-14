@@ -9,8 +9,13 @@
 <div id="tbscene_fetch">
 	<div id="tbscene_fetching_animation" style="display: none;">fetching tbscenes ...</div>
 	<form id="batch_form">
-		<div id="tbscenes_input_list"></div>
-		<div id="batchscripts_input_list"></div>
+		<div id="tbscene_select_menu">
+			<button id="tbscene_select_all">SELECT ALL</button>
+			<button id="tbscene_unselect_all">UNSELECT ALL</button>
+		</div>
+		<div id="tbscenes_input_list">
+		</div>
+		<div id="batch_scripts_input_list"></div>
 		 <p><input type="submit" value="RUN BACTH SCRIPT" p>
 	</form>	
 	<div id="batch_status"></div>

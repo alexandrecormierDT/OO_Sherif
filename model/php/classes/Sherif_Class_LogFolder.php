@@ -67,7 +67,12 @@ class LogFolder extends RemoteFolder
 		
 	}
 	
-	
+	public function get_log_json_string(){
+		
+			return json_encode($this->get_parsed_log_property_array());
+
+		
+	}	
 	
 
 }

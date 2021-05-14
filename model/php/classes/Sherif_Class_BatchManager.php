@@ -27,6 +27,23 @@ class BatchManager
 		
 	}
 	
+	public function get_batch_scripts_array_as_json(){
+		
+		$batch_scripts_json_array = array();
+		
+		foreach($this->batch_scripts_object_array as $batch_script){
+			
+				$batch_script_map =  $batch_script->get_object_propeties_map();
+				
+				array_push($batch_scripts_json_array,$batch_script_map);
+
+		}
+		
+		return json_encode($batch_scripts_json_array);
+	}	
+	
+	
+	
 	private function parse_js_files_from_source_folder(){
 		
 		if(isset($this->source_folder_object)){

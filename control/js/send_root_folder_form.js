@@ -24,22 +24,12 @@ $("#root_folder_form").submit(function(e){ // On sélectionne le formulaire par 
 			$('#tbscene_fetching_animation').hide()
 			
 			var return_json = JSON.parse(code_html);
-			console.log("hello");
+
 			console.log(return_json);
 			
-			for(var t = 0 ; t < return_json.length ; t++){
-			
-				var TBS_object = new window.Sherif.model.TBScene();
-				TBS_object.parse_json_map(return_json[t]); 
-				window.Sherif.control.TBScenes.add_tbscene_object(TBS_object);
-
-
-			}	
-			
-			window.Sherif.view.tbscene_row_list.refresh_list()
-			
-			
-			
+			window.Sherif.control.tbscenes.parse_tbscene_objects_from_json(return_json);
+			window.Sherif.view.tbscene_row_list.refresh_list();
+			window.Sherif.view.script_history_list.append_all_history();
 
        }
     });

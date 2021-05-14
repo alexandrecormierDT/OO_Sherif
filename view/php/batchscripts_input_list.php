@@ -13,7 +13,7 @@
 			$batchscript_icon = $batchscript_object->get_file_path();
 			
 			?>
-			<div class="batchscript_row">
+			<div class="batch_script_row">
 
 				<?php
 					include($LEVEL."view/php/templates/batchscript_input.php");

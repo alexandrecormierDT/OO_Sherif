@@ -13,7 +13,6 @@ class Batch extends SherifObject
     public function __construct() {
 		
 		$this->xstages_paths_array = array();
-		
 		$this->harmony_path ='C:/Program Files (x86)/Toon Boom Animation/Toon Boom Harmony 20 Premium/win64/bin/HarmonyPremium.exe';
 
     }
