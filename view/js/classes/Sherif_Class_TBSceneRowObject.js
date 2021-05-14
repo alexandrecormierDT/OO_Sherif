@@ -1,8 +1,70 @@
+window.Sherif.view.TBSCeneRowManager = function(){
+	
+	var rows = [];
+	
+	var list_div = "#tbscenes_input_list";
+	
+	this.init = function(){
+		
+		rows = [];
+		
+	}
+	
+	function add_row_for_tbscene_object(_tbs_object){
+		
+		var new_tbs_row = new window.Sherif.view.TBSceneRowObject(_tbs_object);
+		new_tbs_row.create_html();
+		rows.push(new_tbs_row);
+		
+		return new_tbs_row;
+		
+	}
+	
+	this.get_row_by_html_div = function(_html_div){
+		
+		
+		
+	}
+	
+	this.refresh_list = function(){
+		
+		var TBS_object_array = window.Sherif.control.TBScenes.get_tbscenes_objects_array();
+		console.log( TBS_object_array) ;
+		
+		for (var key in TBS_object_array) {
+			
+				var current_TBS_object = TBS_object_array[key];
+				var new_row = add_row_for_tbscene_object(current_TBS_object)
+				
+				console.log(new_row.get_html());
+				
+				$("#tbscenes_input_list").append(new_row.get_html());			
+			
+				
+		}
+		
+		for(var t = 0 ; t < TBS_object_array.length ; t++){
+			
+
+			
+		}
+
+	}
+	
+}
+
+
+window.Sherif.view.tbscene_row_list = new window.Sherif.view.TBSCeneRowManager()
+
+
 
 window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 	
 	var input_div_template_path = "view/html/templates/tbscene_input.html";
 	var row_div_template_path = "view/html/templates/tbscene_row_div.html";
+	var row_state = 'unselected';
+	var row_div_html;
+	
 	
 	var tbdata = {
 		tbscene_id:_tbscene_object.get_tbscene_id(),
@@ -21,6 +83,30 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 		
 	}
 	
+	this.get_row_state = function(){
+		
+		return row_state;
+		
+	}
+	
+	this.set_row_state = function(_rs){
+		
+		row_state = _rs;
+		
+	}	
+	
+	this.select_row = function(){
+		
+		row_state = 'selected';
+		$(row_div_html).css('background-color', 'blue');
+		
+	}
+	
+	this.unselect_row = function(){
+		
+		
+	}
+	
 	function format_html_input_string(){
 
 		var string = $.ajax({type: "GET", url: input_div_template_path, async: false}).responseText;
@@ -32,6 +118,9 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 				
 	}	
 	
+	
+	
+	
 	function format_html_row_div_string(){
 		
 		var string = $.ajax({type: "GET", url: row_div_template_path, async: false}).responseText;
@@ -42,7 +131,7 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 	}
 	
 
-	this.get_html = function(){
+	this.create_html = function(){
 		
 
 		var input_html = $.parseHTML(format_html_input_string());
@@ -53,16 +142,49 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 		
 		$(row_html).append(input_html);
 		$(row_html).append(script_log_history_html);
+		
 		$(row_html).click(function(){
-			window.Sherif.control.SelectTBScene(tbdata.tbscene_id)
+			console.log(this);
+			
+			window.Sherif.view.select_TBScene(tbdata.tbscene_id)
+			window.Sherif.control.select_TBScene(tbdata.tbscene_id)
+			
 		});	
+		
+		row_div_html = row_html;
 		
 		return row_html;		
 
 		
 	}
 	
+	this.get_html = function(){
+
+		return row_div_html;		
+
+	}	
+	
+	function change_row_color_to_selected(_jquery_object){
+		
+		
+		
+	}
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

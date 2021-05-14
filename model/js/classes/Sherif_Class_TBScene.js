@@ -226,7 +226,13 @@ window.Sherif.model.TBScenesManager = function(){
 	
 	this.get_tbscene_object_by_id = function(_tbscene_id){
 		
-		return tbscenes_objects_array[_tbscene_id]
+		return tbscenes_objects_array[_tbscene_id];
+		
+	}
+	
+	this.get_tbscenes_objects_array = function(){
+		
+		return tbscenes_objects_array;
 		
 	}
 	

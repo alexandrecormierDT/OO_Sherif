@@ -29,17 +29,17 @@ $("#root_folder_form").submit(function(e){ // On sélectionne le formulaire par 
 			
 			for(var t = 0 ; t < return_json.length ; t++){
 			
-				var TBS = new window.Sherif.model.TBScene();
-				TBS.parse_json_map(return_json[t]); 
-				
-				
-				window.Sherif.control.TBScenes.add_tbscene_object(TBS);
-			
-				var tbscene_row = new  window.Sherif.view.TBSceneRowObject(TBS);
+				var TBS_object = new window.Sherif.model.TBScene();
+				TBS_object.parse_json_map(return_json[t]); 
+				window.Sherif.control.TBScenes.add_tbscene_object(TBS_object);
 
-				$("#tbscenes_input_list").append(tbscene_row.get_html());				
 
 			}	
+			
+			window.Sherif.view.tbscene_row_list.refresh_list()
+			
+			
+			
 
        }
     });
