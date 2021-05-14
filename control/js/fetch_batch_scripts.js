@@ -17,7 +17,6 @@ function fetch_batch_scripts(){
 
 			console.log(return_json);
 			
-
 			window.Sherif.control.batch_scripts.parse_batch_script_objects_from_json(return_json);
 			window.Sherif.view.batch_script_row_list.refresh_list();
 

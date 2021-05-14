@@ -91,11 +91,11 @@ window.Sherif.view.TBSCeneRowManager = function(){
 		
 	}
 	
-	this.get_selected_rows_list = function(){
+	this.get_selected_rows_object_list = function(){
 		
 		var selected_rows = [];
 		
-		for (var key in TBS_object_array) {
+		for (var key in rows}
 			
 			var current_row  = rows[key];
 			
@@ -106,6 +106,26 @@ window.Sherif.view.TBSCeneRowManager = function(){
 		}
 		
 		return selected_rows;
+		
+	}
+	
+	this.get_selected_tbscene_id_list = function(){
+		
+		var selected_ids = [];
+		
+		for (var key in rows}
+			
+			var current_row  = rows[key];
+			
+			if(current_row.is_selected()){
+				
+				selected_rows.push(key);
+				
+			}
+			
+		}
+		
+		return selected_ids;
 		
 	}
 	

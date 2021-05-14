@@ -45,32 +45,7 @@ window.Sherif.view.BatchScriptRowManager = function(){
 				$("#batch_scripts_input_list").append(new_row.get_html());
 				
 		}
-		
-		$('#batch_script_select_all').click(function(){
 
-			window.Sherif.view.batch_script_row_list.select_all()
-			
-		});
-		$('#batch_script_unselect_all').click(function(){
-			
-			window.Sherif.view.batch_script_row_list.unselect_all()
-			
-		})
-
-	}
-	
-	this.select_all = function(){
-		
-		for (var key in rows) {
-			
-			var current_row  = rows[key];
-			
-			current_row.select_row();
-			
-		}				
-		
-		
-		
 	}
 	
 	this.unselect_all = function(){
@@ -83,11 +58,6 @@ window.Sherif.view.BatchScriptRowManager = function(){
 			
 		}		
 		
-		
-	}
-	
-	this.create_selection_buttons = function(){
-
 		
 	}
 	
@@ -174,7 +144,7 @@ window.Sherif.view.BatchScriptRowObject = function(_batch_script_object){
 	function unselect_row() {
 		
 		row_state = 'unselected';
-		$(row_div_html).css('background-color', 'black');		
+		$(row_div_html).css('background-color', 'gray');		
 		
 	}
 	

@@ -69,6 +69,8 @@ function send_batch_form(){
 		return this.name;
 	}).get();
 	
+	
+	
 
 	var selected_xstages_paths_list_str = checked_tbscenes.join(",");
 	var selected_batchscripts_paths = checked_batchscripts[0];

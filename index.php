@@ -10,6 +10,8 @@ $page_name = $_GET['page'];
 global $root_page;
 $root_page = "http://localhost/OO_sherif/index.php";
 
+// rename BatchSript to TBScript ?? 
+
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +22,7 @@ $root_page = "http://localhost/OO_sherif/index.php";
 <script src="model/js/Sherif.js" type="text/javascript"></script>
 <script src="model/js/classes/Sherif_Class_TBScene.js" type="text/javascript"></script>
 <script src="model/js/classes/Sherif_Class_BatchScript.js" type="text/javascript"></script>
+<script src="model/js/classes/Sherif_Class_Batch.js" type="text/javascript"></script>
 <script src="control/js/Sherif_Control.js" type="text/javascript"></script>
 <script src="view/js/classes/Sherif_Class_TBSceneRowObject.js" type="text/javascript"></script>
 <script src="view/js/classes/Sherif_Class_ScriptHistoryObject.js" type="text/javascript"></script>
