@@ -156,16 +156,18 @@ window.Sherif.view.BatchScriptRowObject = function(_batch_script_object){
 	function select_row(){
 		
 		row_state = 'selected';
-		$(row_div_html).css('background-color', 'blue');
-		
+		$(row_div_html).css('background-color', '#e87f61');
+		$('#input_'+bsdata.batch_script_id).prop( "checked", true );
 	}
 	
 	function unselect_row() {
 		
 		row_state = 'unselected';
-		$(row_div_html).css('background-color', 'black');		
+		$(row_div_html).css('background-color', '#999999');
+		$('#input_'+bsdata.batch_script_id).prop( "checked", false );		
 		
 	}
+	
 	
 	function format_html_row_div_string(){
 		
@@ -215,16 +217,20 @@ window.Sherif.view.BatchScriptRowObject = function(_batch_script_object){
 		
 		row_html = $.parseHTML(format_html_row_div_string());
 		
+		input_html = '#input_'+bsdata.batch_script_id;
+		
 		$(row_html).click(function(){
 
 			
 			window.Sherif.view.batch_script_row_list.unselect_all()
 			
 			toggle_selection();
+			window.Sherif.control.print_command_line();
 			
 		});	
 		
 		row_div_html = row_html;
+		
 		
 		unselect_row();
 		

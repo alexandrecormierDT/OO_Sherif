@@ -4,36 +4,54 @@ body, html {
   width: 100%;
   height: 100%;
   margin: 0;
+  background-color:#565656;
+   font-family: Verdana, Helvetica, sans-serif;
+	font-size: 1em;
 }
 
 
 .container {
   width: 100%;
   height: 100%;
+   background-color:#707070;
+}
+
+#banner{
+    padding:0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  color: #e8c268;
+  /* align-content: center; */
+}
+#banner img{
+     display:block;
+     margin:0 auto;
+}
+
+.pane{
+	
+    background-color: #bbbbbb;	
+	margin:3px;	
+    height: 100%;
 }
 
 #leftpane {
     width: 40%;
-    height: 100%;
     float: left;
-    background-color: royalblue;
     border-collapse: collapse;
 }
 
 #middlepane {
     width: 30%;
-    height: 100%;
     float: left;
-    background-color: black;
     border-collapse: collapse;
+
 }
 
 #rightpane {
   width:25%;
-  height: 100%;
   position: relative;
   float: left;
-  background-color: yellow;
   border-collapse: collapse;
 }
 
@@ -41,7 +59,6 @@ body, html {
   width: 100%;
   height: 100px;
   border-collapse: collapse;
-  background-color: #4da6ff;
 }
 
 
@@ -62,17 +79,6 @@ body, html {
 
 
 
-#banner{
-     padding:0 20px;
-  border: 1px solid #c3c3c3;
-  display: flex;
-  flex-wrap: wrap;
-  /* align-content: center; */
-}
-#banner img{
-     display:block;
-     margin:0 auto;
-}
 
 #script_list{
 	width:100%;
@@ -84,10 +90,7 @@ body, html {
 	width:100%;
 }
 
-body{
-  font-family: Arial, Helvetica, sans-serif;
-	font-size: 1em;
-}
+
 
 input[type=text], select {
   width: 100%;
@@ -97,22 +100,23 @@ input[type=text], select {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+
 }
 
 input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
+  /*width: 100%;*/
+  background-color: #e8c268;
+  color: black;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin-top:8px;
+  margin-bottom:8px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: #f7d992;
 }
 
 input[type=checkbox]
@@ -129,7 +133,6 @@ input[type=checkbox]
 
 div {
   border-radius: 5px;
-  background-color: #f2f2f2;
   padding: 10px;
 }
 
@@ -137,46 +140,39 @@ div {
 
 
 #tbscenes_input_list{
-	font-family: Arial, Helvetica, sans-serif;
-	padding:0;
-	
+	background-color:#707070;
 
 }
 
 #batch_scripts_input_list{
-	font-family: Arial, Helvetica, sans-serif;
 	color: white;
-	
+	 background-color:#707070;
 }
 
 
-.tbscene_row{
-	border: none;
+.row{
+	border: 2px;
 	border-radius:4px;
-	padding:1%;
 	margin:1%;	
 	background-color: #BBBBBB;
-
+	cursor: pointer;	
 }
 
-.tbscene_input{
-	border: none;
-	 border-radius: 4px;
-	padding:0.5%;
-	margin: 0.5%;
-	text-align: center;	
-
-
+.tbscene{
+	border: 2px;
+	border-radius:4px;
+	margin:1%;	
+	background-color: #BBBBBB;
+	cursor: pointer;
 }
+
 
 .tbscene_name{
+	
 	border: none;
-	 border-radius: 4px;
-	padding:0.5%;
-	margin: 0.5%;
 	text-align: center;	
 	background-color: #FFFFFF;	
-	height:3%;
+
 
 }
 
@@ -207,7 +203,7 @@ option{
 	padding:1%;
 	margin:1%;	
 	background-color: #BBBBBB;
-
+	cursor: pointer;
 }
 
 
@@ -234,6 +230,25 @@ option{
 
 
 .batchscript_row{
+	
+	border: none;
+	border-radius:4px;
+	padding:1%;
+	margin:1%;	
+	background-color:#888888;
+
+}
+
+
+#command_line{
+	font-family: Courier New;
+	color:#DDDDDD;
+	overflow-wrap: anywhere;
+	background-color:#000000;
+	
+}
+
+.logbox{
 	
 	border: none;
 	border-radius:4px;

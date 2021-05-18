@@ -194,14 +194,15 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 	function select_row(){
 		
 		row_state = 'selected';
-		$(row_div_html).css('background-color', 'blue');
-		
+		$(row_div_html).css('background-color', '#61bbe8');
+		$(input_html).prop( "checked", true );
 	}
 	
 	function unselect_row() {
 		
 		row_state = 'unselected';
-		$(row_div_html).css('background-color', 'gray');		
+		$(row_div_html).css('background-color', '#999999');
+		$(input_html).prop( "checked", false );		
 		
 	}
 	
@@ -267,9 +268,10 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 		input_html = $.parseHTML(format_html_input_string());
 		
 		$(row_html).append(input_html);
-		$(row_html).click(function(){
+		$(input_html).click(function(){
 
 			toggle_selection();
+			window.Sherif.control.print_command_line();
 			
 		});	
 		

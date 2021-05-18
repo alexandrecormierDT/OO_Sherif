@@ -1,9 +1,10 @@
-<div id="leftpane">
+<div class = "pane" id="leftpane">
+	<div class="panel_title">TBSCENES</div>
 	<div id="root_folder">
 	<form id="root_folder_form">
-		<p>select root folder : <br>
+		<input type="submit" value="FETCH TBSCENES" p><span id="feedback"></span>
+		select root folder : <br>
 		<input class="path_input" type="text" id="input_root_folder_path"/>
-		<p><input type="submit" value="FETCH TBSCENES" p><span id="feedback"></span>
 	</form>
 	<script src="control/js/send_root_folder_form.js"></script>
 	</div>
@@ -20,19 +21,18 @@
 
 		</form>	
 		<div id="batch_status"></div>
-
 	</div>
 </div>
-<div id="middlepane">		
+<div class = "pane" id="middlepane">	
+	<div class="panel_title">BATCH SCRIPTS</div>	
+	<input id="run_batch_script" type="submit" value="RUN BACTH SCRIPT">
 	<div id="batch_scripts_input_list"></div>
-<input id="run_batch_script" type="submit" value="RUN BACTH SCRIPT">
-<input id="print_command_line" type="submit" value="PRINT COMMAND LINE">
 </div>
-<div id="rightpane">
-<div id = "command_line" ></div>
-<div id="batch_feedback"></div>
+<div class = "pane" id="rightpane">
+	<div class="panel_title">FEEDBACK</div>
+	<div id = "command_line" ></div>
+	<div id="batch_feedback"></div>
 </div>
 <script src="control/js/fetch_batch_scripts.js"></script>
 <script src="control/js/send_batch_form.js"></script>
-<script src="control/js/print_command_line.js"></script>
 

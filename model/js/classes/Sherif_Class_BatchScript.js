@@ -12,7 +12,7 @@ window.Sherif.model.BatchScript = function(){
 		script_file_path = _json_object.file_path;
 		script_file_name = _json_object.file_name;
 		script_name = _json_object.file_name;
-		script_id =script_file_name+"_"+generate_serial();
+		script_id ="batch_script_"+generate_serial();
 		
 	}
 
