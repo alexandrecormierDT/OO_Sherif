@@ -1,30 +1,30 @@
 
 window.Sherif.control.tbscenes = new window.Sherif.model.TBScenesManager();
 window.Sherif.control.batch_scripts = new window.Sherif.model.BatchScriptManager();
+window.Sherif.control.batchs = new window.Sherif.model.BatchManager();
 	
 
-window.Sherif.control.select_TBScene = function(_tbscene_id){
+
+
+
+window.Sherif.control.send_batch_form = function(){
 	
-	var selected_TBS = window.Sherif.control.tbscenes.get_tbscene_object_by_id(_tbscene_id);
-	
-	console.log(selected_TBS.get_xstage_path());
+	console.log("send_batch_form");
+	var current_batch = window.Sherif.control.batchs.add_batch();
+	current_batch.send_batch_form_for_each_tbscenes ();
 
 }
-
-window.Sherif.control.unselect_TBScene = function(_tbscene_id){
 	
-	var selected_TBS = window.Sherif.control.tbscenes.get_tbscene_object_by_id(_tbscene_id);
 	
-	console.log(selected_TBS.get_xstage_path());
+window.Sherif.control.print_command_line = function(){
+	
+	console.log("print_command_line");
+	var current_batch = window.Sherif.control.batchs.add_batch();
+	
+	console.log(current_batch.get_data_form());
+	console.log(current_batch.get_command_string());
+	
+	
+	$("#command_line").html(current_batch.get_command_string());
 
 }
-
-window.Sherif.control.is_selected_TBScene = function(_tbscene_id){
-	
-	var selected_TBS = window.Sherif.control.tbscenes.get_tbscene_object_by_id(_tbscene_id);
-	
-	console.log(selected_TBS.get_xstage_path());
-
-}
-
-

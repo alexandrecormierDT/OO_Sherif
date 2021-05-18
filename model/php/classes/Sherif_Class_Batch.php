@@ -29,7 +29,7 @@ class Batch extends SherifObject
 		
 	}
 	
-	public function ser_xstage_path($_xp){
+	public function set_xstage_path($_xp){
 		
 		$this->xstages_paths_array = array();
 		array_push($this->xstages_paths_array,$_xp);
@@ -59,31 +59,22 @@ class Batch extends SherifObject
 		
 	}			
 	
-	public function run_batch_monothread_repeat(){
+	public function run_batch_monothread(){
 					
-		foreach($this->xstages_paths_array as $xstage_path){
-			
-			$command_string = $this->format_command_single_xstage($xstage_path);
-			
-			echo "<div id='bacth_command_string'>";
-			echo $xstage_path;
-			echo "<br>";
-			echo $command_string;
-			echo "</div>";
-			
-			$result_string;
-			exec($command_string,$result_string);	
+		$xstage_path = $this->xstages_paths_array[0];
+		$command_string = $this->format_command_single_xstage($xstage_path);
+		exec($command_string,$result_string);	
 
-			echo '[DONE]';			
-			
-		}
-		
-		echo '[BATCH FINISHED]';
-		
 	}
 	
 	
 	// not supported  :(
+	
+	public function get_command_line(){
+		
+		return $this->format_command_string_multi_xstages();
+		
+	}
 	
 	private function format_command_string_multi_xstages(){
 		

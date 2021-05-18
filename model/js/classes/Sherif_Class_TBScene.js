@@ -18,103 +18,6 @@ window.Sherif.model.XStage = function(){
 	
 }
 
-window.Sherif.model.LogFolder = function(){
-	
-	var script_log_object_array;
-	var folder_path;
-	
-	this.parse_json_map = function(_json_object){
-		
-		folder_path = _json_object.folder_path;
-		script_log_object_array = [];
-		
-		for(var s = 0 ; s < _json_object.script_log_object_array.length ; s++){
-			
-			var new_script_log = new window.Sherif.model.ScriptLog();
-			new_script_log.parse_json_map(_json_object.script_log_object_array[s]);
-			script_log_object_array.push(new_script_log);
-			
-		}
-		
-		
-
-	}
-	
-	this.get_path = function(){
-		
-		return folder_path;
-		
-	}
-	
-	this.get_script_log_object_array = function(){
-		
-		return script_log_object_array;
-		
-	}
-	
-}
-
-window.Sherif.model.ScriptLog = function(){
-	
-	var file_path;
-	var script_name;
-	var script_log_id;
-	var time_stamp;
-	var icon_png_path;
-	var script_log_link;
-	
-	this.parse_json_map = function(_json_object){
-		
-		file_path = _json_object.file_path;
-		script_name = _json_object.script_name;
-		time_stamp = _json_object.time_stamp;
-		icon_png_path = _json_object.icon_png_path;
-		script_log_link = _json_object.script_log_link;
-		script_log_id = "script_log_"+generate_serial();
-
-	}
-	
-
-	
-	this.get_file_path = function(){
-		
-		return file_path;
-		
-	}
-	this.get_script_name = function(){
-		
-		return script_name;
-		
-	}	
-	this.get_script_log_id = function(){
-		
-		return script_log_id;
-		
-	}	
-	this.get_time_stamp = function(){
-		
-		return time_stamp;
-		
-	}	
-	this.get_icon_png_path = function(){
-		
-		return icon_png_path;
-		
-	}	
-	this.get_script_log_link = function(){
-		
-		return script_log_link;
-		
-	}		
-	
-	function generate_serial() {
-	  return Math.floor(Math.random()*1000)
-
-	}
-	
-	
-}
-
 window.Sherif.model.TBScene = function(){
 	
 	var tbscene_id;
@@ -134,13 +37,16 @@ window.Sherif.model.TBScene = function(){
 		folder_path = _json_object.folder_path;
 		tbscene_name = folder_name;
 		
-		tbscene_id =folder_name+"_"+generate_serial();
+		tbscene_id ="tbscene_"+generate_serial();
 		
 		xstage = new window.Sherif.model.XStage(); 
 		xstage.parse_json_map(_json_object.xstage);
 		
 		log_folder_object = new window.Sherif.model.LogFolder(); 
-		//log_folder_object.parse_json_map(_json_object.log_folder);
+		if(_json_object.hasOwnProperty('log_folder')){
+			log_folder_object.parse_json_map(_json_object.log_folder);
+			
+		}
 		
 	}
 	
@@ -149,6 +55,7 @@ window.Sherif.model.TBScene = function(){
 		log_folder_object.parse_json_map(_json_object);
 		
 	}
+	
 
 	
 	this.select_tbscene = function(){
@@ -210,6 +117,12 @@ window.Sherif.model.TBScene = function(){
 		
 	}		
 	
+	this.get_log_folder_path = function(){
+		
+		return log_folder_object.get_path();
+		
+	}
+	
 }
 
 		
@@ -219,7 +132,7 @@ window.Sherif.model.TBScenesManager = function(){
 	
 	this.init = function(){
 		
-		tbscenes_object_array = [];
+		tbscenes_objects_array = [];
 	}
 	
 	this.add_tbscene_object = function(_tbscene_object){
@@ -231,6 +144,8 @@ window.Sherif.model.TBScenesManager = function(){
 	}
 	
 	this.parse_tbscene_objects_from_json = function(_json_object){
+		
+		tbscenes_objects_array = [];
 		
 		for(var t = 0 ; t < _json_object.length ; t++){
 	
@@ -256,6 +171,57 @@ window.Sherif.model.TBScenesManager = function(){
 		return tbscenes_objects_array;
 		
 	}
+	//should be done in scripthistory !!!!
+	
+	this.update_tbscene_script_log_by_id= function(_tbscene_id){
+		
+		var current_tbscene = this.get_tbscene_object_by_id(_tbscene_id);
+		
+		var current_log_folder_path = current_tbscene.get_log_folder_path();
+
+		var data_form = 'log_folder_path='+current_log_folder_path;
+		
+		var script_history_object = window.Sherif.view.script_history_list.get_script_history_by_tbscene_id(_tbscene_id);
+		
+
+		 
+		$.ajax({
+		   url : 'control/php/fetch_script_logs.php', // La ressource ciblée
+		   type : 'POST', // Le type de la requête HTTP.
+		   data : data_form,
+		   dataType : 'html', // On désire recevoir du HTML
+		   success : function(code_html, statut){ // code_html contient le HTML renvoyé
+
+			   console.log(code_html);
+
+				var return_json = JSON.parse(code_html);
+				console.log("update_tbscene_script_log");
+				console.log(return_json);
+				console.log(_tbscene_id);
+				
+				// updatin the tbscene feedback
+
+				
+				// updating the script history
+				
+				var new_log_folder_object = new window.Sherif.model.LogFolder()
+				new_log_folder_object.parse_json_map(return_json);
+				
+				console.log(new_log_folder_object);
+				
+				script_history_object.update_data(new_log_folder_object);
+				
+				script_history_object.update_html();
+
+		
+
+		   }
+		});	
+
+
+		
+	}
+
 	
 }
 	

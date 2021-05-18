@@ -9,11 +9,10 @@ window.Sherif.model.BatchScript = function(){
 
 	this.parse_json_map = function(_json_object){
 		
-		file_path = _json_object.file_path;
-		file_name = _json_object.file_name;
+		script_file_path = _json_object.file_path;
+		script_file_name = _json_object.file_name;
 		script_name = _json_object.file_name;
-		
-		script_id =file_name+"_"+generate_serial();
+		script_id =script_file_name+"_"+generate_serial();
 		
 	}
 

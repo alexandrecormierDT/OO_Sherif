@@ -20,7 +20,7 @@ $("#root_folder_form").submit(function(e){ // On sélectionne le formulaire par 
 
            console.log(code_html);
 
-		    $('#feedback').html(statut);
+		    //$('#batch_feedback').html(code_html);
 			$('#tbscene_fetching_animation').hide()
 			
 			var return_json = JSON.parse(code_html);
@@ -29,6 +29,7 @@ $("#root_folder_form").submit(function(e){ // On sélectionne le formulaire par 
 			
 			window.Sherif.control.tbscenes.parse_tbscene_objects_from_json(return_json);
 			window.Sherif.view.tbscene_row_list.refresh_list();
+			window.Sherif.view.script_history_list.refresh_list();
 			window.Sherif.view.script_history_list.append_all_history();
 
        }

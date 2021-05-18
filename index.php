@@ -20,6 +20,7 @@ $root_page = "http://localhost/OO_sherif/index.php";
 <link rel="stylesheet" href="view/styles/sherif.css">
 <script src="lib/jquery.js"></script>
 <script src="model/js/Sherif.js" type="text/javascript"></script>
+<script src="model/js/classes/Sherif_Class_ScriptLog.js" type="text/javascript"></script>
 <script src="model/js/classes/Sherif_Class_TBScene.js" type="text/javascript"></script>
 <script src="model/js/classes/Sherif_Class_BatchScript.js" type="text/javascript"></script>
 <script src="model/js/classes/Sherif_Class_Batch.js" type="text/javascript"></script>

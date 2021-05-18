@@ -60,12 +60,12 @@ window.Sherif.view.BatchScriptRowManager = function(){
 		
 		
 	}
-	
+
 	this.get_selected_rows_list = function(){
 		
 		var selected_rows = [];
 		
-		for (var key in TBS_object_array) {
+		for (var key in rows) {
 			
 			var current_row  = rows[key];
 			
@@ -76,6 +76,25 @@ window.Sherif.view.BatchScriptRowManager = function(){
 		}
 		
 		return selected_rows;
+		
+	}
+	
+	
+	this.get_selected_bacth_script_id_list = function(){
+		
+		var selected_ids = [];
+		
+		for (var key in rows) {
+			
+			var current_row  = rows[key];
+			
+			if(current_row.is_selected()){
+				selected_ids.push(key);
+			}
+			
+		}
+		
+		return selected_ids;		
 		
 	}
 	
@@ -144,7 +163,7 @@ window.Sherif.view.BatchScriptRowObject = function(_batch_script_object){
 	function unselect_row() {
 		
 		row_state = 'unselected';
-		$(row_div_html).css('background-color', 'gray');		
+		$(row_div_html).css('background-color', 'black');		
 		
 	}
 	
@@ -152,8 +171,8 @@ window.Sherif.view.BatchScriptRowObject = function(_batch_script_object){
 		
 		var string = $.ajax({type: "GET", url: row_div_template_path, async: false}).responseText;
 		
-		string = string.replace('[batch_script_id]',bsdata.batch_script_id);
-		string = string.replace('[batch_script_name]',bsdata.batch_script_name);
+		string = string.replaceAll('[batch_script_id]',bsdata.batch_script_id);
+		string = string.replaceAll('[batch_script_name]',bsdata.batch_script_name);
 		
 		return string;		
 		

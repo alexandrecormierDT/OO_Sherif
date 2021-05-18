@@ -37,6 +37,8 @@ window.Sherif.view.TBSCeneRowManager = function(){
 		
 		var TBS_object_array = window.Sherif.control.tbscenes.get_tbscenes_objects_array();
 		
+		rows = [];
+		
 		console.log( TBS_object_array) ;
 		
 		for (var key in TBS_object_array) {
@@ -91,11 +93,13 @@ window.Sherif.view.TBSCeneRowManager = function(){
 		
 	}
 	
+
+	
 	this.get_selected_rows_object_list = function(){
 		
 		var selected_rows = [];
 		
-		for (var key in rows}
+		for (var key in rows){
 			
 			var current_row  = rows[key];
 			
@@ -113,13 +117,13 @@ window.Sherif.view.TBSCeneRowManager = function(){
 		
 		var selected_ids = [];
 		
-		for (var key in rows}
+		for (var key in rows){
 			
 			var current_row  = rows[key];
 			
 			if(current_row.is_selected()){
 				
-				selected_rows.push(key);
+				selected_ids.push(key);
 				
 			}
 			
@@ -197,7 +201,7 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 	function unselect_row() {
 		
 		row_state = 'unselected';
-		$(row_div_html).css('background-color', 'black');		
+		$(row_div_html).css('background-color', 'gray');		
 		
 	}
 	
@@ -205,8 +209,8 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 
 		var string = $.ajax({type: "GET", url: input_div_template_path, async: false}).responseText;
 		
-		string = string.replace('[tbscene_id]',tbdata.tbscene_id);
-		string = string.replace('[tbscene_name]',tbdata.tbscene_name);
+		string = string.replaceAll('[tbscene_id]',tbdata.tbscene_id);
+		string = string.replaceAll('[tbscene_name]',tbdata.tbscene_name);
 
 		return string;
 				
@@ -216,7 +220,7 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 		
 		var string = $.ajax({type: "GET", url: row_div_template_path, async: false}).responseText;
 		
-		string = string.replace('[tbscene_id]',tbdata.tbscene_id);
+		string = string.replaceAll('[tbscene_id]',tbdata.tbscene_id);
 		return string;		
 		
 	}
@@ -283,6 +287,23 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 		return row_div_html;		
 
 	}	
+	
+	this.get_feedback_span_object = function(){
+		
+		return $('#feedback_'+tbdata.tbscene_id);
+		
+	}
+	this.set_feedback_html = function(_html){
+		
+		$('#feedback_'+tbdata.tbscene_id).html(_html);
+		
+	}
+	
+	this.set_script_history_html = function(_html){
+		
+		$('#script_history_'+tbdata.tbscene_id).html(_html);
+	}	
+	
 	
 	function change_row_color_to_selected(_jquery_object){
 		
