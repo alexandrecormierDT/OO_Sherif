@@ -2,7 +2,7 @@ console.log('fetch_batch_scripts');
 
 function fetch_batch_scripts(){
 	
-    var data_form = 'batchscripts_folder=P:/pipeline/alexdev/batch/OO_sherif';
+    var data_form = 'batchscripts_folder=P:\pipeline\alexdev\batch\OO_sherif';
      
     $.ajax({
        url : 'control/php/fetch_batchscripts.php', // La ressource ciblée

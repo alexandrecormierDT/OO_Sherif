@@ -49,6 +49,7 @@ class BatchManager
 		if(isset($this->source_folder_object)){
 
 			$files_object_array = $this->source_folder_object->get_files_objects_array_with_extention("js");
+
 			
 			if(count($files_object_array) > 0 ){
 				

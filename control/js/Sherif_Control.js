@@ -58,24 +58,29 @@ window.Sherif.control.send_root_folder_form = function(){
        url : 'control/php/fetch_tbscenes.php', // La ressource ciblée
        type : 'POST', // Le type de la requête HTTP.
        data : data_form,
-       dataType : 'html', // On désire recevoir du HTML
-       success : function(code_html, statut){ // code_html contient le HTML renvoyé
+       dataType : 'html', 
+       success : function(code_html, statut){ 
 
-           console.log(code_html);
+			return_json = JSON.parse(code_html);
 
-		    //$('#batch_feedback').html(code_html);
-			$('#tbscene_fetching_animation').hide()
-			
-			var return_json = JSON.parse(code_html);
-
+			console.log("-------------fetch tbscenes return_json");
 			console.log(return_json);
 			
-			window.Sherif.control.tbscenes.parse_tbscene_objects_from_json(return_json);
-			window.Sherif.view.tbscene_row_list.refresh_list();
-			window.Sherif.view.script_history_list.refresh_list();
-			window.Sherif.view.script_history_list.append_all_history();
+			if(return_json.length != undefined || return_json.length > 0 ){
+				
+				window.Sherif.control.tbscenes.parse_tbscene_objects_from_json(return_json);
+				window.Sherif.view.tbscene_row_list.refresh_list();
+				window.Sherif.view.script_history_list.refresh_list();
+				window.Sherif.view.script_history_list.append_all_history();
 			
-			window.Sherif.control.append_string_to_feedback_html(" tbscenes fetched ");
+				
+			}else{
+				
+				window.Sherif.control.append_string_to_feedback_html(" tbscenes fetching failed ");			
+				
+			}
+			
+
 
        }
     });

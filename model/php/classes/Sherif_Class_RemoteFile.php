@@ -13,7 +13,7 @@
 			parent::__construct();
 
 			$this->file_path = $this->clean_path($_file_path);
-			$this->read_file_bin_path = "C:/wamp64/www/OO_Sherif/control/bin/read_file.cmd";	
+			$this->read_file_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\read_file.cmd";	
 			$this->file_name = $this->parse_file_name_from_file_path();
 			$this->parent_folder_path = $this->parse_parent_folder_path_from_file_path();
 			$this->file_extension = $this->parse_extension_from_file_path();
@@ -104,7 +104,7 @@
 		
 		private function parse_file_name_from_file_path(){
 			
-			$file_path_explode1  = explode('/',$this->file_path);
+			$file_path_explode1  = explode('\\',$this->file_path);
 			$parsed_file_name = $file_path_explode1[count($file_path_explode1)-1];			
 			return $parsed_file_name;
 			
@@ -151,8 +151,8 @@
 		
 		private function clean_path($_path_string){
 			
-			$same_direction = str_replace('\\','/',$_path_string);
-			$removed_double = preg_replace('#/+#','/',$same_direction);
+			$same_direction = str_replace('/','\\',$_path_string);
+			$removed_double = preg_replace('#\+#','\\',$same_direction);
 			return $removed_double;
 			
 		}	
@@ -164,7 +164,7 @@
 
 		private function deactivate_path($_path_string){
 			
-			$deactivated_slashes = str_replace('/','$',$_path_string);
+			$deactivated_slashes = str_replace('\\','$',$_path_string);
 			
 			return $deactivated_slashes;
 			
@@ -172,7 +172,7 @@
 		}
 		public function activate_path($_path_string){
 			
-			$activated_slashes = str_replace('$','/',$_path_string);
+			$activated_slashes = str_replace('$','\\',$_path_string);
 			
 			return $activated_slashes;
 			
