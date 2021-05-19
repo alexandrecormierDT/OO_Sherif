@@ -66,11 +66,16 @@
 			$command_string = $this->scan_sub_folder_bin_path." ".$this->folder_path;
 			
 			
+			
+			
 			//try {
 				
 				$result_array = array();
 				
 				exec($command_string,$result_array);
+				
+				
+				print_r($result_array);
 				
 				$remote_folders_instances = array();
 
@@ -105,6 +110,8 @@
 			//try {
 				
 				exec($command_string,$result_array);
+				
+				print_r($result_array);
 				
 			//} catch (Exception $e) {
 				
@@ -152,7 +159,7 @@
 			$ext_command_string = $this->scan_all_files_by_extension_bin_path." ".$this->folder_path." ".$file_extension;
 			
 			
-			try {
+			//try {
 				
 				$result_file_path_array = array();
 				
@@ -174,10 +181,10 @@
 				
 				return $remote_files_instances;
 				
-			} catch (Exception $e) {
+			//} catch (Exception $e) {
 				
 				echo 'Exception reçue : ',  $e->getMessage(), "\n";
-			}
+			//}
 			
 		}	
 		

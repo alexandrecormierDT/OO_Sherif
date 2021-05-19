@@ -15,6 +15,7 @@ function fetch_batch_scripts(){
 
 			var return_json = JSON.parse(code_html);
 
+			console.log("batchscript return_json");
 			console.log(return_json);
 			
 			window.Sherif.control.batch_scripts.parse_batch_script_objects_from_json(return_json);

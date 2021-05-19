@@ -2,6 +2,6 @@
 set rootPath=%1
 set extension=%2
 @echo off
-for %%f in (%rootPath%\*.%extension%) do (
-    if "%%~xf"==".%extension%" echo %%f
+for /f "tokens=*" %%f in (' DIR /B /a:-d /o:n %rootPath%\*.%extension%') do (
+     echo %%f
 )

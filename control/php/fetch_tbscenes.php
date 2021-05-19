@@ -16,8 +16,6 @@
 
 		$TM->fetch_tbscenes_from_folder($root_folder_path);
 		
-		global $tbscnes_object_array;
-		
 		$tbscenes_object_json_array = $TM->get_tbscene_array_as_json();
 
 		echo $tbscenes_object_json_array;

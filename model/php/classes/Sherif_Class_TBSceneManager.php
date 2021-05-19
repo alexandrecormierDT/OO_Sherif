@@ -37,6 +37,8 @@ class TBSceneManager
 				$tbscene_map =  $tbscene->get_object_propeties_map();
 				
 				array_push($tbscenes_json_array,$tbscene_map);
+				
+				
 
 		}
 		

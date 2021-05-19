@@ -1,7 +1,5 @@
 @echo off
 set rootPath=%1
-for /f %%A IN ('dir /B "%rootPath%"') DO (
-    if exist "%rootPath%\%%A\*" (
-            echo.%rootPath%/%%A/
-    )
+for /f "tokens=*" %%A IN ('dir /B /a:d /o:n "%rootPath%"') DO (
+   echo.%rootPath%/%%A/
 )

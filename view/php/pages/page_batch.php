@@ -30,9 +30,11 @@
 </div>
 <div class = "pane" id="rightpane">
 	<div class="panel_title">FEEDBACK</div>
+	<input id="print_command_line" type="submit" value="COPY COMMAND LINE">
 	<div id = "command_line" ></div>
 	<div id="batch_feedback"></div>
 </div>
 <script src="control/js/fetch_batch_scripts.js"></script>
 <script src="control/js/send_batch_form.js"></script>
+<script src="control/js/print_command_line.js"></script>
 

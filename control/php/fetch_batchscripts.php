@@ -14,6 +14,8 @@
 		
 		$return_json = $BM->get_batch_scripts_array_as_json(); 
 		
+		
+		
 		echo $return_json;
 
 	

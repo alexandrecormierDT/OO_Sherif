@@ -46,10 +46,7 @@ window.Sherif.control.append_string_to_feedback_html = function(_string){
 window.Sherif.control.send_root_folder_form = function(){
 	
 	var selected_root_folder_path = $("#input_root_folder_path").val();
-	$('#tbscene_fetching_animation').show()
-	 $('#tbscenes_input_list').html("");
-	 $('#feedback').html("");
-
+	$('#tbscenes_input_list').html("");
 
 	window.Sherif.control.append_string_to_feedback_html(" fetching tbscenes from "+selected_root_folder_path+" ... ");
 
@@ -83,5 +80,67 @@ window.Sherif.control.send_root_folder_form = function(){
        }
     });
 	
+	
+}
+
+window.Sherif.control.copy_command_line_to_clipboard = function(){
+
+	var containerid = "command_line";
+	
+	var range = document.createRange();
+	range.selectNode(document.getElementById(containerid));
+	window.getSelection().removeAllRanges(); // clear current selection
+	window.getSelection().addRange(range); // to select text
+	document.execCommand("copy");
+	window.getSelection().removeAllRanges();// to deselect
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function send_batch_form(){
+	
+	console.log("send_batch_form");
+	var checked_tbscenes = $('.tbscene_input:checkbox:checked').map(function() {
+		return this.name;
+	}).get();
+	
+	var checked_batchscripts = $('.batchscript_input:checkbox:checked').map(function() {
+		return this.name;
+	}).get();
+	
+	
+	
+
+	var selected_xstages_paths_list_str = checked_tbscenes.join(",");
+	var selected_batchscripts_paths = checked_batchscripts[0];
+
+   // var data_form = $(this).serialize(); // On créer une variable content le formulaire sérialisé
+    var data_form = 'batchscript_path='+selected_batchscripts_paths+'&xstages_paths_list_str='+selected_xstages_paths_list_str
+
+    console.log(data_form);
+     
+    $.ajax({
+       url : 'control/php/run_batch.php', // La ressource ciblée
+       type : 'POST', // Le type de la requête HTTP.
+       data : data_form,
+       dataType : 'html', // On désire recevoir du HTML
+       success : function(code_html, statut){ // code_html contient le HTML renvoyé
+           console.log(code_html);
+           console.log(statut);
+		    $('#bacth_status').html(statut);
+		    $('#batch_feedback').html(code_html);
+		   
+       }
+    });	
 	
 }

@@ -31,7 +31,7 @@ body, html {
 .pane{
 	
     background-color: #bbbbbb;	
-	margin:3px;	
+	margin:5px;	
     height: 100%;
 }
 
@@ -116,7 +116,12 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: #f7d992;
+
+	background-color: #f7d992;
+}
+
+input[type=submit]:active {
+  color: white;
 }
 
 input[type=checkbox]
@@ -128,6 +133,7 @@ input[type=checkbox]
   -o-transform: scale(2); /* Opera */
   transform: scale(2);
   padding: 10px;
+  cursor: pointer;
 }
 
 
@@ -155,16 +161,14 @@ div {
 	border-radius:4px;
 	margin:1%;	
 	background-color: #BBBBBB;
-	cursor: pointer;	
+		
 }
 
 .tbscene{
-	border: 2px;
-	border-radius:4px;
-	margin:1%;	
-	background-color: #BBBBBB;
-	cursor: pointer;
+
 }
+
+
 
 
 .tbscene_name{
@@ -197,13 +201,8 @@ option{
 
 
 
-.batch_script_row{
-	border: none;
-	border-radius:4px;
-	padding:1%;
-	margin:1%;	
-	background-color: #BBBBBB;
-	cursor: pointer;
+.batch_script{
+
 }
 
 
@@ -220,6 +219,14 @@ option{
 	height:3%;
 
 }
+.script_log_icon:hover {
+	/*border: solid;*/
+  background-color: gold;
+}
+
+
+
+
 .script_icon_big{
 	
 	width:10%;
@@ -227,17 +234,6 @@ option{
 
 }
 
-
-
-.batchscript_row{
-	
-	border: none;
-	border-radius:4px;
-	padding:1%;
-	margin:1%;	
-	background-color:#888888;
-
-}
 
 
 #command_line{
