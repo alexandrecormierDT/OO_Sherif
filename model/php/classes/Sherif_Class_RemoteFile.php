@@ -6,14 +6,19 @@
 		private $file_name; 		
 		private $file_extension; 		
 		private $parent_folder_path;
-		private $readfile_bin_path;
+		private $read_file_bin_path;
+		private $create_file_bin_path;
+		private $delete_file_bin_path;
 		
 		public function __construct($_file_path) {
 			
 			parent::__construct();
 
-			$this->file_path = $this->clean_path($_file_path);
 			$this->read_file_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\read_file.cmd";	
+			$this->create_file_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\create_file.cmd";	
+			$this->delete_file_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\delete_file.cmd";	
+			
+			$this->file_path = $this->clean_path($_file_path);
 			$this->file_name = $this->parse_file_name_from_file_path();
 			$this->parent_folder_path = $this->parse_parent_folder_path_from_file_path();
 			$this->file_extension = $this->parse_extension_from_file_path();
@@ -75,6 +80,23 @@
 			
 			
 		}
+		
+		public function create_file(){
+			
+			$create_command_string = $this->create_file_bin_path." ".$this->file_path;
+			
+			exec($create_command_string,$read_result_array);
+			
+		}
+		
+		public function delete_file(){
+			
+			$delete_command_string = $this->delete_file_bin_path." ".$this->file_path;
+			
+			exec($delete_command_string,$read_result_array);
+			
+			
+		}		
 		
 		public function get_file_name(){
 			

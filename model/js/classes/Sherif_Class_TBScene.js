@@ -27,6 +27,7 @@ window.Sherif.model.TBScene = function(){
 	var log_folder_object;
 	var xstage; 
 	var selected = false; 
+	var locked = false; 
 
 	
 	var tbscene_id =""; 
@@ -36,6 +37,7 @@ window.Sherif.model.TBScene = function(){
 		folder_name = _json_object.folder_name;
 		folder_path = _json_object.folder_path;
 		tbscene_name = folder_name;
+		locked = _json_object.locked == "yes" ? true : false; 
 		
 		tbscene_id ="tbscene_"+generate_serial();
 		
@@ -74,10 +76,16 @@ window.Sherif.model.TBScene = function(){
 		
 		return selected;
 		
-	}		
+	}	
+
+	this.is_locked = function(){
+		
+		return locked;
+		
+	}			
 	
 	function generate_serial() {
-	  return Math.floor(Math.random()*1000)
+	  return Math.floor(Math.random()*1000000000)
 
 	}
 	
@@ -152,6 +160,10 @@ window.Sherif.model.TBScenesManager = function(){
 			var TBS_object = new window.Sherif.model.TBScene();
 			
 			TBS_object.parse_json_map(_json_object[t]); 
+			
+			console.log("NEW TBSCENE");
+			console.log(TBS_object.get_tbscene_id());
+			console.log(TBS_object);
 			
 			this.add_tbscene_object(TBS_object);
 

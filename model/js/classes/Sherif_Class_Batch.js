@@ -100,8 +100,6 @@ window.Sherif.model.Batch = function(){
 				
 				tbscene_row_object.set_feedback_html(code_html);
 				window.Sherif.control.tbscenes.update_tbscene_script_log_by_id(tbscene_id);
-
-				
 				window.Sherif.control.append_string_to_feedback_html("batch--"+tbscene_name+"_"+statut);
 				
 				

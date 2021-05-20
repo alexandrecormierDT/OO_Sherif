@@ -19,7 +19,6 @@ window.Sherif.model.LogFolder = function(){
 		
 		for(var s = 0 ; s < arg_array.length ; s++){
 			
-			
 			console.log("_json_object")
 			console.log(arg_array[s])
 			
@@ -67,7 +66,10 @@ window.Sherif.model.ScriptLog = function(){
 
 	}
 	
+	function generate_serial() {
+	  return Math.floor(Math.random()*1000000000000)
 
+	}
 	
 	this.get_file_path = function(){
 		

@@ -4,6 +4,8 @@ class LogFolder extends RemoteFolder
 	
 	private $script_log_object_array; 
 	
+	private $bacth_running;
+	
     public function __construct($_folder_path) {
 		
 		parent::__construct($_folder_path);
@@ -12,12 +14,21 @@ class LogFolder extends RemoteFolder
 		
 		$this->parse_html_files();
 		
+		$this->is_batch_txt_present();
+		
     }
 	
 	public function update_property_map(){
 		
 		$this->set_property('script_log_object_array',$this->get_parsed_log_property_array()); 
+		$this->set_property('bacth_running',$this->is_batch_txt_present()); 
 			
+	}
+	
+	public function is_batch_running(){
+		
+		return $this->is_batch_txt_present();
+		
 	}
 	
 	
@@ -44,6 +55,36 @@ class LogFolder extends RemoteFolder
 	}
 	
 	
+	private function is_batch_txt_present(){
+		
+		$files_object_array = $this->get_files_objects_array_with_extention("txt");
+		
+		if(count($files_object_array) > 0 ){
+			
+			foreach($files_object_array as $current_txt_file){
+
+				if($current_txt_file->get_file_name() == "batch.txt"){
+					
+					$this->bacth_running = "yes";
+					
+					return $this->batch_running;
+
+				}
+			
+			}
+			
+		}
+		
+		$this->bacth_running = "no";
+		
+		return $this->batch_running;
+		
+	}
+	
+	
+			
+		
+	
 	public function get_script_log_object_array(){
 		
 		return $this->script_log_object_array;
@@ -51,6 +92,7 @@ class LogFolder extends RemoteFolder
 		
 	}
 	
+
 	public function get_parsed_log_property_array(){
 		
 			$parsed_log_array = array();

@@ -11,12 +11,6 @@
 		
 		include($LEVEL."model/php/Sherif.php");
 		
-		global $SHERIF; 
-		
-		if(isset($SHERIF)== false){
-			$SHERIF = new Sherif();
-		}
-		
 		$batch_object = new Batch();
 		$batch_object->parse_xstages_path_list_string($xstages_paths_list_str);
 		$batch_object->set_batch_script_path($batchscipt_path);

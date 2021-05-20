@@ -10,7 +10,6 @@ window.Sherif.control.batchs = new window.Sherif.model.BatchManager();
 window.Sherif.control.send_batch_form = function(){
 	
 	console.log("send_batch_form");
-	$("#command_line").html("BATCH RUNNING ...");
 	var current_batch = window.Sherif.control.batchs.add_batch();
 	
 	window.Sherif.control.append_string_to_feedback_html(" starting batch ... ");
@@ -45,6 +44,7 @@ window.Sherif.control.append_string_to_feedback_html = function(_string){
 
 window.Sherif.control.send_root_folder_form = function(){
 	
+	// need to clean this input
 	var selected_root_folder_path = $("#input_root_folder_path").val();
 	$('#tbscenes_input_list').html("");
 

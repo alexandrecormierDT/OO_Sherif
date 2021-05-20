@@ -15,9 +15,9 @@ window.Sherif.model.BatchScript = function(){
 		script_id ="batch_script_"+generate_serial();
 		
 	}
-
+	
 	function generate_serial() {
-	  return Math.floor(Math.random()*1000)
+	  return Math.floor(Math.random()*1000000000)
 
 	}
 	

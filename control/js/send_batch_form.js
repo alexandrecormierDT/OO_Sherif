@@ -6,7 +6,7 @@ $("#run_batch_script").click(function(e){ // On sélectionne le formulaire par s
 	//send_chain_batch_form()
 	
 	console.log("run_batch_script");
-	window.Sherif.control.copy_command_line_to_clipboard();
+	window.Sherif.control.send_batch_form();
 
 
 });
