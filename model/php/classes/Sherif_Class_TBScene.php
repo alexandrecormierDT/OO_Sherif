@@ -70,9 +70,9 @@ class TBScene extends RemoteFolder
 	
 	private function is_locked(){
 		
-		$batch_txt_file_object = new RemoteFile($this->batch_txt_file_path); 
-		/return $batch_txt_file_object->exists();
-		
+		//$batch_txt_file_object = new RemoteFile($this->batch_txt_file_path); 
+		//return $batch_txt_file_object->exists();
+		return "no";
 		
 	}
 	

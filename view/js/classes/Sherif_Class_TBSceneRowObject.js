@@ -50,14 +50,7 @@ window.Sherif.view.TBSCeneRowManager = function(){
 				
 		}
 		
-		$('#tbscene_select_all').click(function(){
 
-			window.Sherif.view.tbscene_row_list.select_all()
-		});
-		$('#tbscene_unselect_all').click(function(){
-			window.Sherif.view.tbscene_row_list.unselect_all()
-			
-		})
 
 	}
 	
@@ -92,8 +85,6 @@ window.Sherif.view.TBSCeneRowManager = function(){
 
 		
 	}
-	
-
 	
 	this.get_selected_rows_object_list = function(){
 		
@@ -134,12 +125,6 @@ window.Sherif.view.TBSCeneRowManager = function(){
 	}
 	
 }
-
-
-
-
-window.Sherif.view.tbscene_row_list = new window.Sherif.view.TBSCeneRowManager()
-
 
 
 window.Sherif.view.TBSceneRowObject = function(_tbscene_object){

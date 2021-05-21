@@ -2,7 +2,7 @@
 	<div class="panel_title">TBSCENES</div>
 	<div id="root_folder">
 	<form id="root_folder_form">
-		<input type="submit" value="FETCH TBSCENES" p><span id="feedback"></span>
+		<input type="submit" value="FETCH TBSCENES"><span id="feedback"></span>
 		select root folder : <br>
 		<input class="path_input" type="text" id="input_root_folder_path"/>
 	</form>
@@ -12,8 +12,10 @@
 		<div id="tbscene_fetching_animation" style="display: none;">fetching tbscenes ...</div>
 		<form id="batch_form">
 			<div id="tbscene_select_menu">
-				<button id="tbscene_select_all">SELECT ALL</button>
-				<button id="tbscene_unselect_all">UNSELECT ALL</button>
+
+				<span class = "sherif_small_button" id="tbscene_select_all" >SELECT ALL</span>
+				<span  class = "sherif_small_button" id="tbscene_unselect_all" >UNSELECT ALL</span>
+				
 			</div>
 			<div id="tbscenes_input_list"></div>
 
@@ -37,4 +39,4 @@
 <script src="control/js/fetch_batch_scripts.js"></script>
 <script src="control/js/send_batch_form.js"></script>
 <script src="control/js/print_command_line.js"></script>
-
+<script src="view/js/tbscene_selection.js"></script>

@@ -8,7 +8,7 @@ $page_name = $_GET['page'];
 }
 
 global $root_page;
-$root_page = "sherif/OO_sherif/index.php";
+$root_page = ""
 
 // rename BatchSript to TBScript ?? 
 
@@ -19,16 +19,22 @@ $root_page = "sherif/OO_sherif/index.php";
 <head>
 <link rel="stylesheet" href="view/styles/sherif.css">
 <script src="lib/jquery.js"></script>
+
 <script src="model/js/Sherif.js" type="text/javascript"></script>
 <script src="model/js/classes/Sherif_Class_ScriptLog.js" type="text/javascript"></script>
 <script src="model/js/classes/Sherif_Class_TBScene.js" type="text/javascript"></script>
 <script src="model/js/classes/Sherif_Class_BatchScript.js" type="text/javascript"></script>
 <script src="model/js/classes/Sherif_Class_Batch.js" type="text/javascript"></script>
+
 <script src="control/js/Sherif_Control.js" type="text/javascript"></script>
+
 <script src="view/js/classes/Sherif_Class_TBSceneRowObject.js" type="text/javascript"></script>
 <script src="view/js/classes/Sherif_Class_ScriptHistoryObject.js" type="text/javascript"></script>
 <script src="view/js/classes/Sherif_Class_BatchScriptRowObject.js" type="text/javascript"></script>
+<script src="view/js/Sherif_View.js" type="text/javascript"></script>
+
 <script src="control/js/send_batch_form.js" type="text/javascript"></script>
+
 </head>
 <body>
 	<?php include("view/php/banner.php");?>
