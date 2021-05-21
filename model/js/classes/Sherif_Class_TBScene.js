@@ -95,6 +95,12 @@ window.Sherif.model.TBScene = function(){
 		
 	}	
 	
+	this.get_folder_path  = function(){
+		
+		return folder_path;
+		
+	}
+	
 	this.get_tbscene_name  = function(){
 		
 		return tbscene_name;
@@ -188,14 +194,9 @@ window.Sherif.model.TBScenesManager = function(){
 	this.update_tbscene_script_log_by_id= function(_tbscene_id){
 		
 		var current_tbscene = this.get_tbscene_object_by_id(_tbscene_id);
-		
 		var current_log_folder_path = current_tbscene.get_log_folder_path();
-
 		var data_form = 'log_folder_path='+current_log_folder_path;
-		
 		var script_history_object = window.Sherif.view.script_history_list.get_script_history_by_tbscene_id(_tbscene_id);
-		
-
 		 
 		$.ajax({
 		   url : 'control/php/fetch_script_logs.php', // La ressource ciblée
@@ -230,9 +231,52 @@ window.Sherif.model.TBScenesManager = function(){
 		   }
 		});	
 
+	}
+	
+	this.lock_tbscene_by_id= function(_tbscene_id){
+		
+		var current_tbscene = this.get_tbscene_object_by_id(_tbscene_id);
+		
+		var tbscene_folder_path = current_tbscene.get_folder_path()
+		
+		var data_form = 'tbscene_folder_path='+tbscene_folder_path;
+		
+		$.ajax({
+		   url : 'control/php/lock_tbscene.php', // La ressource ciblée
+		   type : 'POST', // Le type de la requête HTTP.
+		   data : data_form,
+		   dataType : 'html', // On désire recevoir du HTML
+		   success : function(code_html, statut){ // code_html contient le HTML renvoyé
 
+			   console.log(code_html);
+
+		   }
+		});		
 		
 	}
+	
+	this.unlock_tbscene_by_id= function(_tbscene_id){
+		
+		var current_tbscene = this.get_tbscene_object_by_id(_tbscene_id);
+		
+		var tbscene_folder_path = current_tbscene.get_folder_path()
+		
+		var data_form = 'tbscene_folder_path='+tbscene_folder_path;
+		
+		$.ajax({
+		   url : 'control/php/unlock_tbscene.php', // La ressource ciblée
+		   type : 'POST', // Le type de la requête HTTP.
+		   data : data_form,
+		   dataType : 'html', // On désire recevoir du HTML
+		   success : function(code_html, statut){ // code_html contient le HTML renvoyé
+
+			   console.log(code_html);
+
+		   }
+		});			
+		
+		
+	}	
 
 	
 }

@@ -9,6 +9,7 @@
 		private $read_file_bin_path;
 		private $create_file_bin_path;
 		private $delete_file_bin_path;
+		private $file_exists_bin_path;
 		
 		public function __construct($_file_path) {
 			
@@ -17,6 +18,7 @@
 			$this->read_file_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\read_file.cmd";	
 			$this->create_file_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\create_file.cmd";	
 			$this->delete_file_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\delete_file.cmd";	
+			$this->file_exists_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\file_exists.cmd";	
 			
 			$this->file_path = $this->clean_path($_file_path);
 			$this->file_name = $this->parse_file_name_from_file_path();
@@ -84,19 +86,33 @@
 		public function create_file(){
 			
 			$create_command_string = $this->create_file_bin_path." ".$this->file_path;
-			
-			exec($create_command_string,$read_result_array);
+			$result_string = "";
+			exec($create_command_string,$result_string);
 			
 		}
 		
 		public function delete_file(){
 			
 			$delete_command_string = $this->delete_file_bin_path." ".$this->file_path;
-			
-			exec($delete_command_string,$read_result_array);
+			$result_string="";
+			exec($delete_command_string,$result_string);
 			
 			
 		}		
+		
+		public function exists(){
+			
+			$delete_command_string = $this->file_exists_bin_path." ".$this->file_path;
+			$result_string = ""; 
+			exec($delete_command_string,$result_string);
+			
+			if($result_string == "yes"){
+				return true; 
+			}else{
+				return false; 
+			}
+			
+		}	
 		
 		public function get_file_name(){
 			

@@ -23,7 +23,7 @@ class TBScene extends RemoteFolder
 		
 		$this->parse_sub_folders();
 		
-		$this->batch_txt_file_path = $this->get_folder_path."//batch.txt";
+		$this->batch_txt_file_path = $this->get_folder_path()."\batch.txt";
 		
     }
 	
@@ -33,7 +33,9 @@ class TBScene extends RemoteFolder
 	public function update_property_map(){
 	
 		$this->set_property('xstage',$this->last_xstage_object->get_object_propeties_map()) ;
-		$this->set_property('log_folder',$this->log_folder_object->get_object_propeties_map());
+		if(isset($this->log_folder_object)){
+			$this->set_property('log_folder',$this->log_folder_object->get_object_propeties_map());
+		}
 		$this->set_property('locked',$this->is_locked());
 
 
@@ -43,7 +45,7 @@ class TBScene extends RemoteFolder
 		
 		if($this->is_locked()=="no"){
 		
-			var $batch_txt_file_object = new RemoteFile($this->batch_txt_file_path); 
+			$batch_txt_file_object = new RemoteFile($this->batch_txt_file_path); 
 			$batch_txt_file_object->create_file();
 			$this->locked = "yes";
 		
@@ -56,9 +58,9 @@ class TBScene extends RemoteFolder
 		
 		if($this->is_locked()=="yes"){
 			
-			var $batch_txt_file_object = new RemoteFile($this->batch_txt_file_path); 
-			$batch_txt_file_object->delete_file();
-			$this->locked = "no";	
+			//$batch_txt_file_object = new RemoteFile($this->batch_txt_file_path); 
+			//$batch_txt_file_object->delete_file();
+			//$this->locked = "no";	
 			
 		}
 		
@@ -68,8 +70,8 @@ class TBScene extends RemoteFolder
 	
 	private function is_locked(){
 		
-		var $batch_txt_file_object = new RemoteFile($this->batch_txt_file_path); 
-		return $batch_txt_file_object->exists();
+		$batch_txt_file_object = new RemoteFile($this->batch_txt_file_path); 
+		/return $batch_txt_file_object->exists();
 		
 		
 	}

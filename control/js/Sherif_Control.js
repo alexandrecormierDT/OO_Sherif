@@ -14,6 +14,8 @@ window.Sherif.control.send_batch_form = function(){
 	
 	window.Sherif.control.append_string_to_feedback_html(" starting batch ... ");
 	
+	
+	
 	current_batch.send_batch_form_for_each_tbscenes ();
 	
 
@@ -60,8 +62,10 @@ window.Sherif.control.send_root_folder_form = function(){
        data : data_form,
        dataType : 'html', 
        success : function(code_html, statut){ 
-
-			return_json = JSON.parse(code_html);
+	   
+			console.log(code_html);
+			
+			var return_json = JSON.parse(code_html);
 
 			console.log("-------------fetch tbscenes return_json");
 			console.log(return_json);
@@ -79,8 +83,6 @@ window.Sherif.control.send_root_folder_form = function(){
 				window.Sherif.control.append_string_to_feedback_html(" tbscenes fetching failed ");			
 				
 			}
-			
-
 
        }
     });
@@ -103,49 +105,3 @@ window.Sherif.control.copy_command_line_to_clipboard = function(){
 
 
 
-
-
-
-
-
-
-
-
-
-function send_batch_form(){
-	
-	console.log("send_batch_form");
-	var checked_tbscenes = $('.tbscene_input:checkbox:checked').map(function() {
-		return this.name;
-	}).get();
-	
-	var checked_batchscripts = $('.batchscript_input:checkbox:checked').map(function() {
-		return this.name;
-	}).get();
-	
-	
-	
-
-	var selected_xstages_paths_list_str = checked_tbscenes.join(",");
-	var selected_batchscripts_paths = checked_batchscripts[0];
-
-   // var data_form = $(this).serialize(); // On créer une variable content le formulaire sérialisé
-    var data_form = 'batchscript_path='+selected_batchscripts_paths+'&xstages_paths_list_str='+selected_xstages_paths_list_str
-
-    console.log(data_form);
-     
-    $.ajax({
-       url : 'control/php/run_batch.php', // La ressource ciblée
-       type : 'POST', // Le type de la requête HTTP.
-       data : data_form,
-       dataType : 'html', // On désire recevoir du HTML
-       success : function(code_html, statut){ // code_html contient le HTML renvoyé
-           console.log(code_html);
-           console.log(statut);
-		    $('#bacth_status').html(statut);
-		    $('#batch_feedback').html(code_html);
-		   
-       }
-    });	
-	
-}

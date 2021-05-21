@@ -68,6 +68,9 @@ window.Sherif.model.Batch = function(){
 		for (var i = 0 ; i <selected_tbscene_ids.length; i++){
 			
 			var selected_TBS = window.Sherif.control.tbscenes.get_tbscene_object_by_id(selected_tbscene_ids[i]);
+			
+			
+			
 			send_batch_form_for_tbscene_object(selected_TBS)
 			
 		}		
@@ -87,6 +90,8 @@ window.Sherif.model.Batch = function(){
 		
 		window.Sherif.control.append_string_to_feedback_html("batch--"+tbscene_name+"_begin .... ");
 		
+		window.Sherif.control.tbscenes.lock_tbscene_by_id(tbscene_id);		
+		
 		$.ajax({
 		   url : 'control/php/run_script_on_xstage.php', 
 		   type : 'POST',
@@ -99,9 +104,11 @@ window.Sherif.model.Batch = function(){
 				//$('#bacth_status').html(statut);
 				
 				tbscene_row_object.set_feedback_html(code_html);
-				window.Sherif.control.tbscenes.update_tbscene_script_log_by_id(tbscene_id);
-				window.Sherif.control.append_string_to_feedback_html("batch--"+tbscene_name+"_"+statut);
 				
+				window.Sherif.control.tbscenes.unlock_tbscene_by_id(tbscene_id);				
+				window.Sherif.control.tbscenes.update_tbscene_script_log_by_id(tbscene_id);
+				
+				window.Sherif.control.append_string_to_feedback_html("batch--"+tbscene_name+"_"+statut);
 				
 			   
 		   }

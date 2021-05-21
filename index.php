@@ -8,7 +8,7 @@ $page_name = $_GET['page'];
 }
 
 global $root_page;
-$root_page = "http://localhost/OO_sherif/index.php";
+$root_page = "sherif/OO_sherif/index.php";
 
 // rename BatchSript to TBScript ?? 
 
