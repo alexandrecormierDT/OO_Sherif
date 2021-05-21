@@ -16,10 +16,10 @@ class ScriptLog extends RemoteFile
 		
 		parent::__construct($_file_path);
 		
-		$this->script_icon_png_directory = "http://localhost/OO_sherif/view/png/script_icons/";
+		$this->script_icon_png_directory = "view/png/script_icons/";
 		$this->parse_script_file_name();
 		$this->icon_png_path  = $this->parse_icon_png_path();
-		$this->script_log_link = "http://localhost/OO_sherif/index.php?page=script_log&log_path=".$this->get_deactivated_file_path();
+		$this->script_log_link = "index.php?page=script_log&log_path=".$this->get_deactivated_file_path();
 		
 	
     } 
