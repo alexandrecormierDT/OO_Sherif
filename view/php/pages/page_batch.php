@@ -32,6 +32,6 @@
 	<div id="batch_feedback"></div>
 </div>
 <script src="control/js/fetch_batch_scripts.js"></script>
-<script src="control/js/send_batch_form.js"></script>
+<script src="control/js/send_batch_form.js" type="text/javascript"></script>
 <script src="control/js/print_command_line.js"></script>
 <script src="view/js/tbscene_selection.js"></script>

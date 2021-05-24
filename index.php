@@ -1,14 +1,26 @@
 <?php
 
-include("model/php/Sherif.php");
-
 $page_name = "home";
+
+
+
+global $branch;
+$branch ="release";
+
+if (isset($_GET['branch'])) {
+	$branch = $_GET['branch'];	
+}
+
 if (isset($_GET['page'])) {
-$page_name = $_GET['page'];	
+	$page_name = $_GET['page'];	
 }
 
 global $root_page;
-$root_page = ""
+$root_page = "";
+
+
+include("model/php/Sherif.php");
+
 
 // rename BatchSript to TBScript ?? 
 

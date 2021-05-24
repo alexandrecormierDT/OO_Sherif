@@ -1,6 +1,7 @@
 <?php
 
 	global $LEVEL;
+	
 	if(isset($LEVEL) == false){
 		$LEVEL = "";
 	}
@@ -20,10 +21,4 @@
 	include($LEVEL."model/php/classes/Sherif_Class_BatchManager.php");
 	
 	
-	global $SHERIF;
-	$SHERIF = new Sherif();
-	
-	
-	
-
 ?>
