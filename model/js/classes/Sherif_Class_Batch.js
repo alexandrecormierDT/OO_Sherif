@@ -98,6 +98,7 @@ window.Sherif.model.Batch = function(){
 		   type : 'POST',
 		   data : tbscene_data_form,
 		   dataType : 'html', 
+		   timeout: 100000,
 		   success : function(code_html, statut){ 
 			   console.log(code_html);
 			   console.log(statut);

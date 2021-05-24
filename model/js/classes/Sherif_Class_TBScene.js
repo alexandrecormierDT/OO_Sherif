@@ -39,7 +39,7 @@ window.Sherif.model.TBScene = function(){
 		tbscene_name = folder_name;
 		locked = _json_object.locked == "yes" ? true : false; 
 		
-		tbscene_id ="tbscene_"+generate_serial();
+		tbscene_id ="tbscene_"+window.Sherif.generate_serial();
 		
 		xstage = new window.Sherif.model.XStage(); 
 		xstage.parse_json_map(_json_object.xstage);
@@ -84,10 +84,6 @@ window.Sherif.model.TBScene = function(){
 		
 	}			
 	
-	function generate_serial() {
-	  return Math.floor(Math.random()*1000000000)
-
-	}
 	
 	this.get_folder_name  = function(){
 		
