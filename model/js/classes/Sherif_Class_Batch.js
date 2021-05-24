@@ -93,6 +93,7 @@ window.Sherif.model.Batch = function(){
 		window.Sherif.control.tbscenes.lock_tbscene_by_id(tbscene_id);		
 		
 		$.ajax({
+			
 		   url : 'control/php/run_script_on_xstage.php', 
 		   type : 'POST',
 		   data : tbscene_data_form,
@@ -107,7 +108,6 @@ window.Sherif.model.Batch = function(){
 				
 				window.Sherif.control.tbscenes.unlock_tbscene_by_id(tbscene_id);				
 				window.Sherif.control.tbscenes.update_tbscene_script_log_by_id(tbscene_id);
-				
 				window.Sherif.control.append_string_to_feedback_html("batch--"+tbscene_name+"_"+statut);
 				
 			   

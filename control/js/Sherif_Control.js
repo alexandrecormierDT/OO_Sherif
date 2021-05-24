@@ -13,9 +13,6 @@ window.Sherif.control.send_batch_form = function(){
 	var current_batch = window.Sherif.control.batchs.add_batch();
 	
 	window.Sherif.control.append_string_to_feedback_html(" starting batch ... ");
-	
-	
-	
 	current_batch.send_batch_form_for_each_tbscenes ();
 	
 

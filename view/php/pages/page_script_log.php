@@ -4,8 +4,7 @@ if (isset($_GET['log_path'])) {
 	
 	$deactivated_log_path = $_GET['log_path'];	
 	
-	$activated_slashes = str_replace('$','/',$deactivated_log_path);
-	
+	$activated_slashes = str_replace('$','\\',$deactivated_log_path);
 	$log_path = $activated_slashes;
 	
 	$script_log_object = new ScriptLog($log_path);

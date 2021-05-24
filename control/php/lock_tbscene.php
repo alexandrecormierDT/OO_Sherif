@@ -2,7 +2,6 @@
 
 	if(isset($_POST['tbscene_folder_path']){
 		
-	
 		$tbscene_folder_path =$_POST['tbscene_folder_path'];
 		
 		global $LEVEL;
@@ -14,8 +13,6 @@
 		$tbscene_object->lock_scene();
 		
 		echo "TBSCENE LOCKED"; 
-
-
 	}
 
 

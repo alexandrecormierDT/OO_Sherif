@@ -15,10 +15,10 @@
 			
 			parent::__construct();
 
-			$this->read_file_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\read_file.cmd";	
+			$this->read_file_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\\read_file.cmd";	
 			$this->create_file_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\create_file.cmd";	
 			$this->delete_file_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\delete_file.cmd";	
-			$this->file_exists_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\file_exists.cmd";	
+			$this->file_exists_bin_path = "C:\wamp64\www\OO_Sherif\control\bin\\file_exists.cmd";	
 			
 			$this->file_path = $this->clean_path($_file_path);
 			$this->file_name = $this->parse_file_name_from_file_path();
@@ -66,21 +66,10 @@
 		public function read_content(){
 			
 			$read_command_string = $this->read_file_bin_path." ".$this->file_path;
-			
-			try {
-				
-				$read_result_array = array();
-				
-				exec($read_command_string,$read_result_array);
-				
-				return $read_result_array;
-				
-			} catch (Exception $e) {
-				
-				echo 'error reading file : ',  $e->getMessage(), "\n";
-			}
-			
-			
+			$read_result_array = array();
+			exec($read_command_string,$read_result_array);
+			return $read_result_array;
+
 		}
 		
 		public function create_file(){

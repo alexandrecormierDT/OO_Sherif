@@ -12,15 +12,10 @@
 		<div id="tbscene_fetching_animation" style="display: none;">fetching tbscenes ...</div>
 		<form id="batch_form">
 			<div id="tbscene_select_menu">
-
 				<span class = "sherif_small_button" id="tbscene_select_all" >SELECT ALL</span>
 				<span  class = "sherif_small_button" id="tbscene_unselect_all" >UNSELECT ALL</span>
-				
 			</div>
 			<div id="tbscenes_input_list"></div>
-
-			
-
 		</form>	
 		<div id="batch_status"></div>
 	</div>

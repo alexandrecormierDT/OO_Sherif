@@ -43,6 +43,7 @@ class ScriptLog extends RemoteFile
 		return $this->script_log_link;
 		
 	}	
+	
 	private function parse_script_file_name(){
 		
 		$file_name_no_ext = $this->get_file_name_without_extension();
@@ -54,8 +55,6 @@ class ScriptLog extends RemoteFile
 		$rest_of_the_name = explode($this->time_stamp."_",$file_name_no_ext);
 		
 		$this->script_name = $rest_of_the_name[1];
-
-		
 		
 	}
 	
