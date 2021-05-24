@@ -31,7 +31,9 @@ include("model/php/Sherif.php");
 <head>
 <link rel="stylesheet" href="view/styles/sherif.css">
 
-<?php include("view/html/js_code.html");?>
+<?php include("model/html/js_model.html");?>
+<?php include("control/html/js_control.html");?>
+<?php include("view/html/js_view.html");?>
 
 </head>
 <body>
@@ -44,7 +46,6 @@ include("model/php/Sherif.php");
 	<?php include("view/php/pages/page_".$page_name.".php");?>
 	
 	</div>
-
 
 </body>
 

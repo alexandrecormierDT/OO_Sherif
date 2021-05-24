@@ -1,10 +1,38 @@
 
+
 window.Sherif.control.tbscenes = new window.Sherif.model.TBScenesManager();
 window.Sherif.control.batch_scripts = new window.Sherif.model.BatchScriptManager();
 window.Sherif.control.batchs = new window.Sherif.model.BatchManager();
 	
 
 
+window.Sherif.control.fetch_batch_scripts = function(){
+	
+    var data_form = 'batchscripts_folder=P:\pipeline\alexdev\batch\OO_sherif';
+     
+    $.ajax({
+       url : 'control/php/fetch_batchscripts.php', // La ressource ciblée
+       type : 'POST', // Le type de la requête HTTP.
+       data : data_form,
+       dataType : 'html', // On désire recevoir du HTML
+       success : function(code_html, statut){ // code_html contient le HTML renvoyé
+	   
+			console.log(code_html);
+
+			var return_json = JSON.parse(code_html);
+
+			console.log("batchscript return_json");
+			console.log(return_json);
+			
+			window.Sherif.control.batch_scripts.parse_batch_script_objects_from_json(return_json);
+			window.Sherif.view.batch_script_row_list.refresh_list();
+
+			
+       }
+    });
+
+	
+}
 
 
 window.Sherif.control.send_batch_form = function(){
@@ -102,3 +130,4 @@ window.Sherif.control.copy_command_line_to_clipboard = function(){
 
 
 
+console.log("CONTROL LOADED")

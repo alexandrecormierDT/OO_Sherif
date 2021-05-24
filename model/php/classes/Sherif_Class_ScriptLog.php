@@ -20,6 +20,7 @@ class ScriptLog extends RemoteFile
 		$this->parse_script_file_name();
 		$this->icon_png_path  = $this->parse_icon_png_path();
 		$this->script_log_link = "index.php?page=script_log&log_path=".$this->get_deactivated_file_path();
+
 		
 	
     } 

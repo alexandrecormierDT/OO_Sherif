@@ -15,13 +15,12 @@
 		
 		public function __construct($_file_path) {
 
-			
 			parent::__construct();
 
-			$this->read_file_bin_path = "C:\wamp64\www\sherif_bin\read_file.cmd";	
-			$this->create_file_bin_path = "C:\wamp64\www\sherif_bin\create_file.cmd";	
-			$this->delete_file_bin_path = "C:\wamp64\www\sherif_bin\delete_file.cmd";	
-			$this->file_exists_bin_path = "C:\wamp64\www\sherif_bin\file_exists.cmd";	
+			$this->read_file_bin_path =  $this->get_bin_folder_path()."\\read_file.cmd";	
+			$this->create_file_bin_path =  $this->get_bin_folder_path()."\\create_file.cmd";	
+			$this->delete_file_bin_path =  $this->get_bin_folder_path()."\\delete_file.cmd";	
+			$this->file_exists_bin_path =  $this->get_bin_folder_path()."\\file_exists.cmd";	
 			
 			$this->file_path = $this->clean_path($_file_path);
 			$this->file_name = $this->parse_file_name_from_file_path();
