@@ -12,13 +12,11 @@ window.Sherif.generate_serial = function(){
 
     window.Sherif.serial_count++;
 
-    var n = Math.floor(Math.random() * 11);
     var k = Math.floor(Math.random() * 1000000);
-    var m = String.fromCharCode(n) + k;
 
     var index = window.Sherif.serial_count+"";
 
-    var unique_id = m+""+index
+    var unique_id = k+""+index
 
     return unique_id;
 
