@@ -66,6 +66,7 @@
 		}
 		
 		public function read_content(){
+
 			
 			$read_command_string = $this->read_file_bin_path." ".$this->file_path;
 			$read_result_array = array();

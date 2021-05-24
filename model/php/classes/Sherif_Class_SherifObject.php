@@ -16,13 +16,35 @@ class SherifObject
 
 		$current_folder = getcwd();
 
-		// C:\wamp64\www\sherif_proto\control\php
-
+		
+		
 		//replaceing the php with bin
+		
+		
+		$split_slash = explode("\\",$current_folder); 
+		
+		$last_splash = $split_slash[count($split_slash)-1];
+		
+		$path = "";
+		
+		if($last_splash == "php"){
+			
 
-		$split_slash = explode("php",$current_folder); 
+			// C:\wamp64\www\sherif_proto\control\php
 
-		$path =  $split_slash[0]."bin";
+			$split_language = explode("php",$current_folder); 
+			$path =  $split_language[0]."bin";
+			
+		}else{
+			
+			//C:\wamp64\www\sherif_proto
+			
+			$path =  $current_folder."\\control\bin";
+
+
+
+		}
+
 
 		return $path;
 
