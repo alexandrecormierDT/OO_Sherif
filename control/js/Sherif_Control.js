@@ -39,9 +39,21 @@ window.Sherif.control.send_batch_form = function(){
 	
 	console.log("send_batch_form");
 	var current_batch = window.Sherif.control.batchs.add_batch();
+
+	var inputs_error_log = current_batch.check_inputs()
+
+	if( inputs_error_log  ==""){
+
 	
-	window.Sherif.control.append_string_to_feedback_html(" starting batch ... ");
-	current_batch.send_batch_form_for_each_tbscenes ();
+		window.Sherif.control.append_string_to_feedback_html(" starting batch ... ");
+		current_batch.send_batch_form_for_each_tbscenes ();
+
+	}else{
+
+		window.Sherif.control.append_string_to_feedback_html( inputs_error_log );
+
+	}
+
 	
 
 }

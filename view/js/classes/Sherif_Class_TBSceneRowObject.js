@@ -7,6 +7,13 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 	var row_state = 'unselected';
 	var row_div_html;
 	var input_html;
+
+	var colors = [];
+	colors["unselected"] = '#999999';
+	colors["success"] ="#7EDC99";
+	colors["selected"] ='#61bbe8';
+	colors["error"] = "#ea8585";
+	colors["batching"] = "#f7da7b";
 	
 	var tbdata = {
 		tbscene_id:_tbscene_object.get_tbscene_id(),
@@ -23,7 +30,7 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 			log_folder_object: _tbscene_object.get_log_folder_object()
 		}		
 	}
-	
+
 	this.get_row_state = function(){
 		
 		return row_state;
@@ -47,19 +54,32 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 		select_row()
 		
 	}
+
+	function change_div_color_to(_color_key){
+
+		$(row_div_html).css('background-color', colors[_color_key]);
+
+
+	}
+
+	this.change_color = function(_color_key){
+
+		change_div_color_to(_color_key);
+
+	}
 	
 
 	function select_row(){
 		
 		row_state = 'selected';
-		$(row_div_html).css('background-color', '#61bbe8');
+		change_div_color_to('selected');
 		$(input_html).prop( "checked", true );
 	}
 	
 	function unselect_row() {
 		
 		row_state = 'unselected';
-		$(row_div_html).css('background-color', '#999999');
+		change_div_color_to("unselected");
 		$(input_html).prop( "checked", false );		
 		
 	}

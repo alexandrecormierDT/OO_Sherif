@@ -45,6 +45,7 @@ window.Sherif.model.TBScene = function(){
 		xstage.parse_json_map(_json_object.xstage);
 		
 		log_folder_object = new window.Sherif.model.LogFolder(); 
+
 		if(_json_object.hasOwnProperty('log_folder')){
 			log_folder_object.parse_json_map(_json_object.log_folder);
 			
@@ -129,7 +130,18 @@ window.Sherif.model.TBScene = function(){
 	
 	this.get_log_folder_path = function(){
 		
-		return log_folder_object.get_path();
+		if(log_folder_object.get_path()!=""){
+
+			return log_folder_object.get_path();
+
+		}else{
+
+			return folder_path+"\\Log";
+
+		}
+
+		
+
 		
 	}
 	
