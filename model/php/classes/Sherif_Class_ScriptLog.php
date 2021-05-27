@@ -93,7 +93,9 @@ class ScriptLog extends RemoteFile
 		
 			if(stripos($line,'[error]')){
 
-				$this->errors_count++;
+				$this->errors_count = 1;
+
+				return true;
 			}
 			
 		}		
