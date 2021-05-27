@@ -30,7 +30,7 @@ include("model/php/Sherif.php");
 <html>
 <head>
 <link rel="stylesheet" href="view/styles/sherif.css">
-
+<link rel="icon" href="view/png/sherif_icon2.png">
 <?php include("model/html/js_model.html");?>
 <?php include("control/html/js_control.html");?>
 <?php include("view/html/js_view.html");?>

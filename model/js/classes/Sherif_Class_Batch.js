@@ -63,7 +63,7 @@ window.Sherif.model.Batch = function(){
 		
 		fetch_xstages_paths()
 		fetch_bacth_script_path()
-		
+
 		var xstages_path_string = xstages_path_array.join(",");
 		data_form = 'batchscript_path='+batch_script_path+'&xstages_paths_str='+xstages_path_string	
 		return data_form;
@@ -83,7 +83,7 @@ window.Sherif.model.Batch = function(){
 			log+= "<br> error -- please select at least one tbscene";
 
 		}
-
+ 
 		if(selected_batch_script_ids.length == 0){
 
 			log+= "<br> error -- please select a batch script";
@@ -138,11 +138,11 @@ window.Sherif.model.Batch = function(){
 			   
 				//$('#bacth_status').html(statut);
 				
+				window.Sherif.control.tbscenes.update_tbscene_script_log_by_id(tbscene_id);
 				tbscene_row_object.set_feedback_html(code_html);
 				tbscene_row_object.unselect_row();	
 				tbscene_row_object.change_color("success");	
 
-				window.Sherif.control.tbscenes.update_tbscene_script_log_by_id(tbscene_id);
 				window.Sherif.control.append_string_to_feedback_html("batch  -- "+tbscene_name+" _ "+statut);
 				
 			   
