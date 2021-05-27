@@ -3,6 +3,7 @@ window.Sherif.model.ScriptLog = function(){
 	var file_path;
 	var script_name;
 	var script_log_id;
+	var errors_count;
 	var time_stamp;
 	var icon_png_path;
 	var script_log_link;
@@ -15,9 +16,17 @@ window.Sherif.model.ScriptLog = function(){
 		icon_png_path = _json_object.icon_png_path;
 		script_log_link = _json_object.script_log_link;
 		script_log_id = "script_log_"+generate_serial();
+		errors_count = _json_object.errors_count;
 
 	}
 	
+	this.get_errors_count = function(){
+
+		return errors_count;
+	
+	}
+
+
 	function generate_serial() {
 	  return Math.floor(Math.random()*1000000000000)
 
@@ -28,11 +37,13 @@ window.Sherif.model.ScriptLog = function(){
 		return file_path;
 		
 	}
+
 	this.get_script_name = function(){
 		
 		return script_name;
 		
 	}	
+
 	this.get_script_log_id = function(){
 		
 		return script_log_id;

@@ -10,7 +10,8 @@ window.Sherif.view.ScriptLogSpan = function(_script_log_object){
 			script_log_id:_script_log_object.get_script_log_id(),
 			time_stamp:_script_log_object.get_time_stamp(),
 			icon_png_path:_script_log_object.get_icon_png_path(),
-			script_log_link:_script_log_object.get_script_log_link()
+			script_log_link:_script_log_object.get_script_log_link(),
+			errors_count:_script_log_object.get_errors_count()
 	}	
 	
 	this.update = function(_script_log_object){
@@ -21,7 +22,8 @@ window.Sherif.view.ScriptLogSpan = function(_script_log_object){
 			script_log_id:_script_log_object.get_script_log_id(),
 			time_stamp:_script_log_object.get_time_stamp(),
 			icon_png_path:_script_log_object.get_icon_png_path(),
-			script_log_link:_script_log_object.get_script_log_link()
+			script_log_link:_script_log_object.get_script_log_link(),
+			errors_count:_script_log_object.get_errors_count()
 		}			
 			
 	}
@@ -29,11 +31,22 @@ window.Sherif.view.ScriptLogSpan = function(_script_log_object){
 	function format_html_script_log_span_string(){
 
 		var string = $.ajax({type: "GET", url: script_log_span_template_path, async: false}).responseText;
+
+		// bypass the sdldat.object maybe and go straight to get_XXX() ? 
 		
 		string = string.replaceAll('[script_log_id]',sldata.script_log_id);
 		string = string.replaceAll('[script_name]',sldata.script_name);
 		string = string.replaceAll('[script_log_link]',sldata.script_log_link);
 		string = string.replaceAll('[icon_png_path]',sldata.icon_png_path);
+
+		if(sldata.errors_count > 0){
+
+			string = string.replaceAll('[has_errors]',"haserrors");
+
+		}else{
+
+			string = string.replaceAll('[has_errors]',"");
+		}
 		
 		return string;
 				
@@ -41,7 +54,7 @@ window.Sherif.view.ScriptLogSpan = function(_script_log_object){
 	
 	this.create_html = function(){
 		
-		console.log("creating hgtml for script log");
+		console.log("creating html for script log");
 		console.log(format_html_script_log_span_string());
 		
 		span_html = $.parseHTML(format_html_script_log_span_string());

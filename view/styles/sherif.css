@@ -249,6 +249,13 @@ option{
   background-color: gold;
 }
 
+.haserrors {
+	border: solid;
+  border-color: rgb(255, 0, 0);
+  /*background-color: gold;*/
+  border-width: 0.2em;
+}
+
 
 
 

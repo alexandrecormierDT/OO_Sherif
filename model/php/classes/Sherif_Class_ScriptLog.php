@@ -11,6 +11,8 @@ class ScriptLog extends RemoteFile
 	private $time_stamp;
 
 	private $script_log_link;
+
+	private $errors_count; 
 	
     public function __construct($_file_path) {
 		
@@ -20,6 +22,7 @@ class ScriptLog extends RemoteFile
 		$this->parse_script_file_name();
 		$this->icon_png_path  = $this->parse_icon_png_path();
 		$this->script_log_link = "index.php?page=script_log&log_path=".$this->get_deactivated_file_path();
+		$this->count_log_errors_in_html();
 
 		
 	
@@ -27,11 +30,12 @@ class ScriptLog extends RemoteFile
 	
 	public function update_property_map(){
 		
-		
 		$this->set_property('icon_png_path',$this->icon_png_path); 
 		$this->set_property('script_name',$this->script_name); 
 		$this->set_property('time_stamp',$this->time_stamp); 				
 		$this->set_property('script_log_link',$this->script_log_link); 				
+		$this->set_property('errors_count',$this->errors_count); 
+
 	}
 	
 	public function get_icon_png_path(){
@@ -44,6 +48,8 @@ class ScriptLog extends RemoteFile
 		return $this->script_log_link;
 		
 	}	
+
+
 	
 	private function parse_script_file_name(){
 		
@@ -78,6 +84,22 @@ class ScriptLog extends RemoteFile
 		return $parsed_png_path;
 		
 	}	
+
+	private function count_log_errors_in_html(){
+
+		$line_array = $this->read_content();
+
+		foreach($line_array as $line){
+		
+			if(stripos($line,'[error]')){
+
+				$this->errors_count++;
+			}
+			
+		}		
+
+
+	}
 	
 
 }
