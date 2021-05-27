@@ -15,10 +15,18 @@
 		$root_folder_path = $selected_root_folder_path;
 
 		$TM->fetch_tbscenes_from_folder($root_folder_path);
-		
-		$tbscenes_object_json_array = $TM->get_tbscene_array_as_json();
 
-		echo $tbscenes_object_json_array;
+		if($TM->found_tbscenes()){
+
+			$tbscenes_object_json_array = $TM->get_tbscene_array_as_json();
+
+			echo $tbscenes_object_json_array;			
+
+		}else{
+
+			echo "no tbscenes found";
+
+		}
 	}
 
 

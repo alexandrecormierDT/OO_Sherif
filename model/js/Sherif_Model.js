@@ -21,3 +21,5 @@ window.Sherif.generate_serial = function(){
     return unique_id;
 
 }
+
+

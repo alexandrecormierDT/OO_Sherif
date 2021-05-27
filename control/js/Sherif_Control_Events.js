@@ -4,10 +4,7 @@ window.onload = function(){
 
     window.Sherif.control.fetch_batch_scripts();
 
-
 }
-
-
 
 $("#print_command_line").click(function(e){ // On sélectionne le formulaire par son identifiant
     e.preventDefault(); // Le navigateur ne peut pas envoyer le formulaire

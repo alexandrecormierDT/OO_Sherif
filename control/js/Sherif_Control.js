@@ -87,11 +87,13 @@ window.Sherif.control.send_root_folder_form = function(){
 	var selected_root_folder_path = $("#input_root_folder_path").val();
 	$('#tbscenes_input_list').html("");
 
-	window.Sherif.control.append_string_to_feedback_html(" fetching tbscenes from "+selected_root_folder_path+" ... ");
+	var root_folder = new window.Sherif.model.RootFolder(selected_root_folder_path)
 
-	console.log(selected_root_folder_path);
+	window.Sherif.control.append_string_to_feedback_html(" fetching tbscenes from "+root_folder.get_path()+" ... ");
 
-    var data_form = 'selected_root_folder_path='+selected_root_folder_path;
+	console.log(root_folder.get_path());
+
+    var data_form = 'selected_root_folder_path='+root_folder.get_path();
      
     $.ajax({
        url : 'control/php/fetch_tbscenes.php', // La ressource ciblée
@@ -101,25 +103,34 @@ window.Sherif.control.send_root_folder_form = function(){
        success : function(code_html, statut){ 
 	   
 			console.log(code_html);
-			
-			var return_json = JSON.parse(code_html);
 
-			console.log("-------------fetch tbscenes return_json");
-			console.log(return_json);
-			
-			if(return_json.length != undefined || return_json.length > 0 ){
-				
-				window.Sherif.control.tbscenes.parse_tbscene_objects_from_json(return_json);
-				window.Sherif.view.tbscene_row_list.refresh_list();
-				window.Sherif.view.script_history_list.refresh_list();
-				window.Sherif.view.script_history_list.append_all_history();
-			
-				
+			if(code_html == "no tbscenes found"){
+
+				window.Sherif.control.append_string_to_feedback_html(" tbscenes fetching failed ");	
+
 			}else{
+
+				var return_json = JSON.parse(code_html);
+
+				console.log("-------------fetch tbscenes return_json");
+				console.log(return_json);
 				
-				window.Sherif.control.append_string_to_feedback_html(" tbscenes fetching failed ");			
-				
+				if(return_json.length != undefined || return_json.length > 0 ){
+					
+					window.Sherif.control.tbscenes.parse_tbscene_objects_from_json(return_json);
+					window.Sherif.view.tbscene_row_list.refresh_list();
+					window.Sherif.view.script_history_list.refresh_list();
+					window.Sherif.view.script_history_list.append_all_history();
+
+				}else{
+					
+					window.Sherif.control.append_string_to_feedback_html(" tbscenes fetching failed ");			
+					
+				}
+
 			}
+			
+
 
        }
     });

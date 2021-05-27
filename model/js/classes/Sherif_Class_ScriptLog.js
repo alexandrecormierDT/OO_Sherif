@@ -1,6 +1,3 @@
-
-
-
 window.Sherif.model.ScriptLog = function(){
 	
 	var file_path;

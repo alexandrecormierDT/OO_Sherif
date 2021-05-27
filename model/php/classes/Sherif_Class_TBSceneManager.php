@@ -19,6 +19,18 @@ class TBSceneManager
 		array_push($tbscenes_object_array,$new_tbscene);
 		
 	}
+
+	public function found_tbscenes(){
+
+		if(count($this->tbscenes_object_array)>0){
+
+			return true;
+
+		}
+
+		return false;
+
+	}
 	
 	
 	public function get_tbscene_objects_array(){
@@ -60,11 +72,11 @@ class TBSceneManager
 	public function fetch_tbscenes_from_folder($_searched_folder_path){
 	
 		$searched_folder_object = new RemoteFolder($_searched_folder_path);
-		
+
 		$sub_folders_array = $searched_folder_object->get_sub_folders_objects_array(); 
 
 		foreach($sub_folders_array as $sub_folder_object){
-			
+		
 			if($this->folder_is_tbscene_folder($sub_folder_object)){
 				
 				$new_tbscene = new TBScene($sub_folder_object->get_folder_path());
@@ -73,8 +85,10 @@ class TBSceneManager
 				
 			}
 
-		}		
-		
+		}	
+
+
+
 	}	
 	
 	private function folder_is_tbscene_folder($_folder_object){
