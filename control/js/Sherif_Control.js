@@ -106,7 +106,7 @@ window.Sherif.control.send_root_folder_form = function(){
 
 			if(code_html == "no tbscenes found"){
 
-				window.Sherif.control.append_string_to_feedback_html(" tbscenes fetching failed ");	
+				window.Sherif.control.append_string_to_feedback_html(" FAIL ! no tbscenes found ");	
 
 			}else{
 
@@ -117,14 +117,24 @@ window.Sherif.control.send_root_folder_form = function(){
 				
 				if(return_json.length != undefined || return_json.length > 0 ){
 					
+					//instanciating model 
 					window.Sherif.control.tbscenes.parse_tbscene_objects_from_json(return_json);
+
+					//instanciating view
 					window.Sherif.view.tbscene_row_list.refresh_list();
 					window.Sherif.view.script_history_list.refresh_list();
+
+					//script logs update
 					window.Sherif.view.script_history_list.append_all_history();
+
+					// feeback on fetching
+					var tbscenes_count = window.Sherif.control.tbscenes.get_tbscenes_objects_count();
+					window.Sherif.control.append_string_to_feedback_html(" SUCCESS ! "+tbscenes_count+"  tbscenes fetched ");
 
 				}else{
 					
-					window.Sherif.control.append_string_to_feedback_html(" tbscenes fetching failed ");			
+					// feeback on fetching
+					window.Sherif.control.append_string_to_feedback_html(" FAIL ! tbscenes fetching failed ");			
 					
 				}
 
@@ -151,6 +161,31 @@ window.Sherif.control.copy_command_line_to_clipboard = function(){
 	
 }
 
+
+window.Sherif.control.copy_xstage_path_to_clipboard = function(_tbscene_id){
+
+	
+	var current_tbscene = window.Sherif.control.tbscenes.get_tbscene_object_by_id(_tbscene_id)
+
+	var xstage_path  = current_tbscene.get_xstage_path();
+	
+	$("#command_line").html(xstage_path);
+
+	console.log(xstage_path);
+	
+	var containerid = "command_line";
+	console.log(document.getElementById(containerid));
+
+	document.getElementById(containerid).innerHTML = xstage_path;
+
+	var range = document.createRange();
+	range.selectNodeContents(document.getElementById(containerid));
+	window.getSelection().removeAllRanges(); // clear current selection
+	window.getSelection().addRange(range); // to select text
+	document.execCommand("copy");
+	window.getSelection().removeAllRanges();// to deselect
+	
+}
 
 
 console.log("CONTROL LOADED")

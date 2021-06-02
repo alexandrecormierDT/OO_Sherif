@@ -1,4 +1,4 @@
-window.Sherif.view.ScriptLogSpan = function(_script_log_object){
+window.Sherif.view.ScriptLogObject = function(_script_log_object){
 	
 	var script_log_span_template_path = "view/html/templates/script_log_span.html";
 	var span_html;

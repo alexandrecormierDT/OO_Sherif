@@ -1,8 +1,9 @@
 
 window.Sherif.view.BatchScriptRowObject = function(_batch_script_object){
 	
-	var row_div_template_path = "view/html/templates/batch_script_row_div.html";
+	var row_div_template_path = "view/html/templates/batch_script_row/batch_script_row_div.html";
 	var row_state = 'unselected';
+	var source_object = _batch_script_object;
 	var row_div_html;
 	var input_html;
 	
@@ -67,6 +68,10 @@ window.Sherif.view.BatchScriptRowObject = function(_batch_script_object){
 		
 		string = string.replaceAll('[batch_script_id]',bsdata.batch_script_id);
 		string = string.replaceAll('[batch_script_name]',bsdata.batch_script_name);
+		string = string.replaceAll('[batch_script_nice_name]',source_object.get_nice_name());
+		string = string.replaceAll('[batch_script_icon_png_path]',source_object.get_icon_png_path());
+
+		console.log(source_object.get_icon_png_path())
 		
 		return string;		
 		

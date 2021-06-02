@@ -2,11 +2,14 @@
 
 window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 	
-	var input_div_template_path = "view/html/templates/tbscene_input.html";
-	var row_div_template_path = "view/html/templates/tbscene_row_div.html";
+	var input_div_template_path = "view\\html\\templates\\tbscene_row\\tbscene_row_input.html";
+	var row_div_template_path = "view\\html\\templates\\tbscene_row\\tbscene_row_div.html";
+	var row_copy_button_template_path = "view\\html\\templates\\tbscene_row\\tbscene_row_copy_button.html";
 	var row_state = 'unselected';
 	var row_div_html;
 	var input_html;
+	var copy_button_html;
+	var source_object = _tbscene_object;
 
 	var colors = [];
 	colors["unselected"] = '#999999';
@@ -29,6 +32,7 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 			tbscene_name:_tbscene_object.get_tbscene_name(),
 			log_folder_object: _tbscene_object.get_log_folder_object()
 		}		
+		source_object = _tbscene_object;
 	}
 
 	this.get_row_state = function(){
@@ -88,8 +92,8 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 
 		var string = $.ajax({type: "GET", url: input_div_template_path, async: false}).responseText;
 		
-		string = string.replaceAll('[tbscene_id]',tbdata.tbscene_id);
-		string = string.replaceAll('[tbscene_name]',tbdata.tbscene_name);
+		string = string.replaceAll('[tbscene_id]',source_object.get_tbscene_id());
+		string = string.replaceAll('[tbscene_name]',source_object.get_tbscene_name());
 
 		return string;
 				
@@ -99,19 +103,25 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 		
 		var string = $.ajax({type: "GET", url: row_div_template_path, async: false}).responseText;
 		
-		string = string.replaceAll('[tbscene_id]',tbdata.tbscene_id);
+		string = string.replaceAll('[tbscene_id]',source_object.get_tbscene_id());
 		return string;		
 		
 	}
 	
-
+	function format_html_row_copy_button_string(){
+		
+		var string = $.ajax({type: "GET", url: row_copy_button_template_path, async: false}).responseText;
+		
+		string = string.replaceAll('[tbscene_id]',source_object.get_tbscene_id());
+		return string;		
+		
+	}
 	
 	function toggle_selection(){
 		
 			if(row_state == 'selected'){
 				unselect_row();
 				console.log('1----selected '+row_state);
-				//window.Sherif.control.unselect_TBScene(tbdata.tbscene_id)
 			}else{
 				select_row();
 				
@@ -144,14 +154,23 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 		
 		row_html = $.parseHTML(format_html_row_div_string());
 		input_html = $.parseHTML(format_html_input_string());
+		copy_button_html = $.parseHTML(format_html_row_copy_button_string())
 		
 		$(row_html).append(input_html);
+		$(row_html).append(copy_button_html);
 		$(input_html).click(function(){
 
 			toggle_selection();
 			window.Sherif.control.print_command_line();
 			
 		});	
+
+		$(copy_button_html).click(function(){
+
+			console.log("click")
+			window.Sherif.control.copy_xstage_path_to_clipboard(source_object.get_tbscene_id())
+
+		});
 		
 		row_div_html = row_html;
 		
@@ -183,13 +202,6 @@ window.Sherif.view.TBSceneRowObject = function(_tbscene_object){
 		
 		$('#script_history_'+tbdata.tbscene_id).html(_html);
 	}	
-	
-	
-	function change_row_color_to_selected(_jquery_object){
-		
-		
-		
-	}
 	
 	
 	

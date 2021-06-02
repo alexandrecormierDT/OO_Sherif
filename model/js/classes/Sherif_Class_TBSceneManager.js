@@ -49,6 +49,12 @@ window.Sherif.model.TBScenesManager = function(){
 		return tbscenes_objects_array;
 		
 	}
+
+	this.get_tbscenes_objects_count = function(){
+		
+		return Object.keys(tbscenes_objects_array).length;
+		
+	}
 	//should be done in scripthistory !!!!
 	
 	this.update_tbscene_script_log_by_id= function(_tbscene_id){

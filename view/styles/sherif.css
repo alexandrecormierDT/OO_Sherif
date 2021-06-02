@@ -36,13 +36,13 @@ body, html {
 }
 
 #leftpane {
-    width: 40%;
+    width: 50%;
     float: left;
     border-collapse: collapse;
 }
 
 #middlepane {
-    width: 30%;
+    width: 20%;
     float: left;
     border-collapse: collapse;
 
@@ -60,22 +60,6 @@ body, html {
   height: 100px;
   border-collapse: collapse;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -103,8 +87,20 @@ input[type=text], select {
 
 }
 
+a {
+  color: #0060B6;
+  text-decoration: none;
+}
+
+a:hover {
+  color:#00A0C6; 
+  text-decoration:none; 
+  cursor:pointer;  
+}
+
 
 .sherif_small_button{
+
   background-color: #e8c268;
   color: black;
   padding: 14px 20px;
@@ -126,6 +122,34 @@ input[type=text], select {
 .sherif_small_button:active {
   color: white;
 }
+
+
+
+
+
+.sherif_smallest_button{
+
+  background-color: #e8c268;
+  color: black;
+  padding: 2px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline;
+
+
+}
+
+.sherif_smallest_button:hover {
+
+	background-color: #f7d992;
+}
+
+.sherif_smallest_button:active {
+  color: white;
+}
+
+
 
 
 input[type=submit] {
@@ -163,8 +187,8 @@ input[type=checkbox]
 
 
 div {
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 10px;
+  padding: 8px;
 }
 
 
@@ -184,10 +208,27 @@ div {
 .row{
 	border: 2px;
 	border-radius:4px;
-	margin:1%;	
+	margin:5px;	
 	background-color: #BBBBBB;
 		
 }
+
+
+
+.row_segment{
+  display: inline;
+  margin:2px;	
+
+}
+
+.right{
+
+  float:right;
+
+}
+
+
+
 
 .tbscene{
 
@@ -226,24 +267,18 @@ option{
 
 
 
-.batch_script{
-
-}
-
-
-
-
-
 .hide_by_default{
 	
 	display: none;
 }
-.script_log_icon{
+
+.small_script_icon{
 	
-	width:3%;
-	height:3%;
+	width:20px;
 
 }
+
+
 .script_log_icon:hover {
 	/*border: solid;*/
   background-color: gold;

@@ -139,10 +139,7 @@ window.Sherif.model.Batch = function(){
 		
 	}
 	
-	
-	
-	
-	
+
 	this.send_batch_form = function(){
 		 
 		$.ajax({
@@ -165,6 +162,18 @@ window.Sherif.model.Batch = function(){
 	
 		return  _str.replace(/\s/g, '');
 		
+	}
+
+	function format_deadline_render_job_command_line(){
+
+
+
+	}
+
+	function create_deadline_render_job_file(){
+
+		
+
 	}
 	
 	function format_command_line(){

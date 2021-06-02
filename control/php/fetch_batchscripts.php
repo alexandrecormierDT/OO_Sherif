@@ -8,7 +8,7 @@
 
 		include($LEVEL."model/php/Sherif.php");
 		
-		$batchscripts_folder = "P:\pipeline\alexdev\batch\OO_sherif";
+		$batchscripts_folder = "P:\pipeline\alexdev\master\OO_sherif_scripts\default";
 		
 		$BM = new BatchManager($branch);
 
