@@ -35,14 +35,24 @@ class ScriptLog extends ScriptObject
 	private function parse_script_log_file_name(){
 		
 		$file_name_no_ext = $this->get_file_name_without_extension();
-		
 		$underscore_explode = explode("_",$file_name_no_ext);
+
+		//old log namspace exeption (when there is time stamp at the beggining)
+		if($underscore_explode[0] == "OO"){
+
+			$this->set_script_name($file_name_no_ext);
+
+		}else{
+
+			$this->time_stamp = $underscore_explode[0];
+			$rest_of_the_name = explode($this->time_stamp."_",$file_name_no_ext);
+			$this->set_script_name($rest_of_the_name[1]);
+
+		}
 		
-		$this->time_stamp = $underscore_explode[0];
-		
-		$rest_of_the_name = explode($this->time_stamp."_",$file_name_no_ext);
-		
-		$this->set_script_name($rest_of_the_name[1]);
+
+
+
 		
 	}
 	

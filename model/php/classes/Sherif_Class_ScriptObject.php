@@ -11,6 +11,7 @@ class ScriptObject extends RemoteFile
 		
 		parent::__construct($_file_path);
 		
+		//$this->script_icon_png_directory = "P:\\pipeline\\tb_scripts\\script-icons\\";
 		$this->script_icon_png_directory = "view/png/script_icons/";
 		$this->parse_script_file_name();
 		$this->parse_icon_png_path();
