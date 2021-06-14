@@ -122,7 +122,6 @@ window.Sherif.model.Batch = function(){
 				
 				window.Sherif.control.tbscenes.update_tbscene_script_log_by_id(tbscene_id);
 				tbscene_row_object.set_feedback_html(code_html);
-				tbscene_row_object.unselect_row();	
 				tbscene_row_object.change_color("success");	
 
 				window.Sherif.control.append_string_to_feedback_html("batch  -- "+tbscene_name+" _ "+statut);
