@@ -33,25 +33,27 @@ window.Sherif.view.ScriptHistoryObject = function(_log_folder_object){
 	this.create_html = function(){
 		
 		span_html = $.parseHTML(format_html_script_history_span_string());
-		
-		console.log("lfdata.script_log_object_array")
-		console.log(lfdata.script_log_object_array)
-		
-		if(lfdata.script_log_object_array != undefined){
+		var max_log_number = 12;
+
+		if(lfdata.script_log_object_array!=undefined){
+			var short_log_length = lfdata.script_log_object_array.length > max_log_number ? max_log_number : lfdata.script_log_object_array.length
 			
-			for(var sls = 0 ; sls < lfdata.script_log_object_array.length ; sls++){
+			if(lfdata.script_log_object_array != undefined){
 				
-				var script_log_span_object = new window.Sherif.view.ScriptLogObject(lfdata.script_log_object_array[sls]);
+				for(var sls = 0 ; sls < short_log_length ; sls++){
+					
+					var script_log_span_object = new window.Sherif.view.ScriptLogObject(lfdata.script_log_object_array[sls]);
+					script_log_span_object.create_html();
+					$(span_html).append(script_log_span_object.get_html());
+					
+				}
 				
-				script_log_span_object.create_html();
-				
-				$(span_html).append(script_log_span_object.get_html());
+				return span_html;			
 				
 			}
-			
-			return span_html;			
-			
+		
 		}
+
 		
 
 	}

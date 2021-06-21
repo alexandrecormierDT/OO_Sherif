@@ -11,11 +11,9 @@ window.Sherif.view.ScriptHistoryObjectManager = function(){
 		console.log(log_folder_object)	
 		
 		var new_script_history_object = new window.Sherif.view.ScriptHistoryObject(log_folder_object)
-		
 		new_script_history_object.create_html();
 		
 		script_history_object_array[_tbs_object.get_tbscene_id()] = new_script_history_object;
-		
 		return new_script_history_object;
 		
 	}
