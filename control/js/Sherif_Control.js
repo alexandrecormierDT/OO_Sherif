@@ -8,7 +8,7 @@ window.Sherif.control.batchs = new window.Sherif.model.BatchManager();
 
 window.Sherif.control.fetch_batch_scripts = function(){
 	
-    var data_form = 'batchscripts_folder=P:\pipeline\alexdev\batch\OO_sherif';
+    var data_form = 'batchscripts_folder=P:\\pipeline\\alexdev\\batch\\OO_sherif';
      
     $.ajax({
        url : 'control/php/fetch_batchscripts.php', // La ressource ciblée

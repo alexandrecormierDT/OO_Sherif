@@ -12,7 +12,6 @@
 		
 		public function __construct($_folder_path) {
 			
-			
 			parent::__construct();
 
 			$this->folder_path = $this->clean_path($_folder_path);
@@ -21,7 +20,6 @@
 			$this->scan_sub_folder_bin_path = $this->get_bin_folder_path()."\\scandir_sub_dir.cmd";
 			$this->scan_all_files_bin_path = $this->get_bin_folder_path()."\\scandir_all_files.cmd";
 			$this->scan_all_files_by_extension_bin_path =  $this->get_bin_folder_path()."\\scandir_all_files_by_extension.cmd";
-			
 			
 			$this->set_property('folder_path',$this->folder_path); 
 			$this->set_property('folder_name',$this->folder_name);

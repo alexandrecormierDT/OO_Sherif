@@ -19,7 +19,8 @@ class TBScene extends RemoteFolder
 		
 		$this->parse_first_level_files();
 		
-		$this->last_xstage_object = $this->xstage_object_array[0];
+		$number_of_xstages = count($this->xstage_object_array);
+		$this->last_xstage_object = $this->xstage_object_array[$number_of_xstages-1];
 		
 		$this->parse_sub_folders();
 		

@@ -23,11 +23,8 @@ class BatchScript extends ScriptObject
   	private function parse_batch_script_file_name(){
 		
       $file_name_no_ext = $this->get_file_name_without_extension();
-      
       $batch_explode = explode("OO_batch_",$file_name_no_ext);
-      
       $reformed_name = "OO_".$batch_explode[1];
-
       $this->set_script_name($reformed_name);
       
     }

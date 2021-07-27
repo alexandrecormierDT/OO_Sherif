@@ -45,17 +45,10 @@ window.Sherif.view.ScriptHistoryObject = function(_log_folder_object){
 					var script_log_span_object = new window.Sherif.view.ScriptLogObject(lfdata.script_log_object_array[sls]);
 					script_log_span_object.create_html();
 					$(span_html).append(script_log_span_object.get_html());
-					
 				}
-				
 				return span_html;			
-				
 			}
-		
 		}
-
-		
-
 	}
 	
 	this.update_html = function(){

@@ -36,9 +36,7 @@ class ScriptObject extends RemoteFile
 	private function parse_script_file_name(){
 		
 		$file_name_no_ext = $this->get_file_name_without_extension();
-		
 		$underscore_explode = explode("_",$file_name_no_ext);
-		
 		$this->script_name = $file_name_no_ext;
 		
 	}
